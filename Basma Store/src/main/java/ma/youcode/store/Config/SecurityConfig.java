@@ -1,20 +1,26 @@
 package ma.youcode.store.Config;
 
+import ma.youcode.store.Filters.JwtFilter;
 import ma.youcode.store.Services.UsersServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig  extends WebSecurityConfigurerAdapter {
+    @Autowired
+    private JwtFilter jwtFilter;
 
     @Bean
     public UserDetailsService userDetailsService() {
@@ -33,6 +39,11 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
 
         return authProvider;
     }
+    @Override
+    @Bean
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -48,6 +59,7 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
                 .httpBasic()
                 .and()
                 .authorizeRequests()
+                .antMatchers("/authenticate") .permitAll()
                 .antMatchers("/").hasAnyAuthority("USER","ADMIN")
                 .antMatchers("/all").hasAnyAuthority("ADMIN")
                 .antMatchers("/user/**").hasAnyAuthority("ADMIN")
@@ -55,11 +67,12 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
                 .antMatchers("/delete/**").hasAnyAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().permitAll()
-                .and()
                 .logout().permitAll()
                 .and()
-                .exceptionHandling().accessDeniedPage("/403")
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+
         ;
     }
 }

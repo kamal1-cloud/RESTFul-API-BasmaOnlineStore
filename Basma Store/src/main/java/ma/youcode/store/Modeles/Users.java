@@ -1,5 +1,8 @@
 package ma.youcode.store.Modeles;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -8,6 +11,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Users")
+@JsonIgnoreProperties(value = {"password", "idUser"})
 public class Users {
 
     @Id
@@ -19,6 +23,7 @@ public class Users {
     private String prenom;
     @Column(nullable = false, length = 255, unique=true)
     private String email;
+//    @JsonIgnore
     @Column(nullable = false, length = 255)
     private String password;
     @Column(nullable = false)
