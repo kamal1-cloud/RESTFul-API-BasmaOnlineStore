@@ -51,12 +51,12 @@ public class CategoryController {
     }
 
     @GetMapping("/categories")
-    public ResponseEntity<Category> findAll() {
+    public ResponseEntity<List<Category>> findAll() {
         log.debug("REST request to get all Categories");
 
         List<Category> list = categoryService.fetchAllCategories();
 
-        return new ResponseEntity<>((Category) list, HttpStatus.OK);
+        return ResponseEntity.ok().body(list);
     }
 
     @GetMapping("/category/{categoryId}")
@@ -66,7 +66,7 @@ public class CategoryController {
 
         return ResponseUtil.wrapOrNotFound(category);
     }
-    
+
     @DeleteMapping("/category/{categoryId}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Void> deleteCategory(@PathVariable("categoryId") Long categoryId) {
