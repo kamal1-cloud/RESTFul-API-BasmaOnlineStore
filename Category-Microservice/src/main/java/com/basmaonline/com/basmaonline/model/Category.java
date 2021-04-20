@@ -10,7 +10,6 @@ public class Category implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="categoryId")
     private Long categoryId;
 
     @Column(name = "categoryName", nullable = false, length = 55)
@@ -39,7 +38,7 @@ public class Category implements Serializable {
 //        this.categoryDescription = categoryDescription;
 //    }
 
-    public long getCategoryId() {
+    public Long getCategoryId() {
         return categoryId;
     }
 
