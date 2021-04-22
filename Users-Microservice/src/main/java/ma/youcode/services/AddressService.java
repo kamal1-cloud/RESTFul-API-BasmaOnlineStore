@@ -9,7 +9,7 @@ public interface AddressService {
 
 	List<AddressDto> getAllAddresses(String email);
 
-	Address createAddress(Address address, String email);
+	AddressDto createAddress(AddressDto address, String email);
 
 	Address getAddress(String addressId);
 
