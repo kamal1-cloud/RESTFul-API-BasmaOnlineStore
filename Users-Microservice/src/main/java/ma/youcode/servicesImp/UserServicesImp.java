@@ -50,6 +50,8 @@ public class UserServicesImp implements UserService, UserDetailsService{
 		if (checkUser != null)
 			throw new RuntimeException("User Already Exist !!");
 		
+	
+		
 		
 		for (int i = 0; i < user.getAddresses().size(); i++) {
 			AddressDto address = user.getAddresses().get(i);
@@ -58,9 +60,9 @@ public class UserServicesImp implements UserService, UserDetailsService{
 			user.getAddresses().set(i, address);
 		}
 		
-		
 		ModelMapper modelMapper = new ModelMapper();
-		User userEntities = modelMapper.map(user, User.class);
+		User userEntities = modelMapper.map(user, User.class); 
+		
 		// Crypting password
 		userEntities.setEncryptedPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		//Genery idUser
@@ -68,7 +70,7 @@ public class UserServicesImp implements UserService, UserDetailsService{
 		
 		// Pirsist in DB
 		User newUser = userRepository.save(userEntities);
-
+		 
 		UserDto userDto = modelMapper.map(newUser, UserDto.class);
 
 		return userDto;

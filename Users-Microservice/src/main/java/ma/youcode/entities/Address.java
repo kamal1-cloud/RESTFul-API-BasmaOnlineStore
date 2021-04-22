@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -15,9 +16,8 @@ public class Address implements Serializable {
 	private static final long serialVersionUID = -3658301504263728813L;
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-
 	@Column(length = 30, nullable = false)
 	private String addressId;
 
@@ -40,15 +40,6 @@ public class Address implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "users_id")
 	private User user;
-
-	public Address(String city, String country, String street, String postal, String type) {
-		super();
-		this.city = city;
-		this.country = country;
-		this.street = street;
-		this.postal = postal;
-		this.type = type;
-	}
 
 	public long getId() {
 		return id;
@@ -113,5 +104,15 @@ public class Address implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+//	public Address(String city, String country, String street, String postal, String type) {
+//		super();
+//		this.city = city;
+//		this.country = country;
+//		this.street = street;
+//		this.postal = postal;
+//		this.type = type;
+//	}
+
 
 }

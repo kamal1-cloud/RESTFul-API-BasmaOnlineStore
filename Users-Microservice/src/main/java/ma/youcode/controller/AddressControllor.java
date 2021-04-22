@@ -8,20 +8,13 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ma.youcode.entities.Address;
-import ma.youcode.entities.User;
-import ma.youcode.requests.AddressRequest;
 import ma.youcode.responses.AddressResponse;
 import ma.youcode.services.AddressService;
 import ma.youcode.shared.AddressDto;
@@ -54,28 +47,28 @@ public class AddressControllor {
 	
 	
 	
-	
-
-	@PostMapping(consumes = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE,
-			MediaType.MULTIPART_FORM_DATA_VALUE }, produces = { MediaType.APPLICATION_XML_VALUE,
-					MediaType.APPLICATION_JSON_VALUE } // pricinpal personne authentifié information
-	)
-	
-	
-	public ResponseEntity<Address> StoreAddresse(@RequestBody AddressRequest addressRequest, Principal principal) {
-
-		Address createAddress = addressService.createAddress(new Address(addressRequest.getCity(), addressRequest.getCountry(), addressRequest.getStreet(),
-				                                                            addressRequest.getPostal(), addressRequest.getType()), principal.getName());
-
-//		AddressResponse newAddress = modelMapper.map(createAddress, AddressResponse.class);
-	
-		
-		
-		
-		
-
-		return new ResponseEntity<>(createAddress, HttpStatus.CREATED);
-	}
+//	
+//
+//	@PostMapping(consumes = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE,
+//			MediaType.MULTIPART_FORM_DATA_VALUE }, produces = { MediaType.APPLICATION_XML_VALUE,
+//					MediaType.APPLICATION_JSON_VALUE } // pricinpal personne authentifié information
+//	)
+//	
+//	
+//	public ResponseEntity<Address> StoreAddresse(@RequestBody AddressRequest addressRequest, Principal principal) {
+//
+//		Address createAddress = addressService.createAddress(new Address(addressRequest.getCity(), addressRequest.getCountry(), addressRequest.getStreet(),
+//				                                                            addressRequest.getPostal(), addressRequest.getType()), principal.getName());
+//
+////		AddressResponse newAddress = modelMapper.map(createAddress, AddressResponse.class);
+//	
+//		
+//		
+//		
+//		
+//
+//		return new ResponseEntity<>(createAddress, HttpStatus.CREATED);
+//	}
 	
 	
 	

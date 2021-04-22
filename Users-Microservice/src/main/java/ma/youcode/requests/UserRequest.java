@@ -7,8 +7,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import ma.youcode.entities.Address;
-
 public class UserRequest {
 	@NotNull(message = "Ce champ ne doit etre null!")
 	@Size(min=3 ,message = "Ce champ doit avoir au mois 3 Caracteres ")
