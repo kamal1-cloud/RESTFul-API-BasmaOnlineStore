@@ -27,16 +27,20 @@ public class Category implements Serializable {
     public Category() {
     }
 
+    public Category(Long categoryId, String categoryName, String categoryDescription, boolean categoryStatus, String categoryImageUrl) {
+        this.categoryId = categoryId;
+        this.categoryName = categoryName;
+        this.categoryDescription = categoryDescription;
+        this.categoryStatus = categoryStatus;
+        this.categoryImageUrl = categoryImageUrl;
+    }
+
     public Category(String categoryName, String categoryDescription, String categoryImageUrl) {
         this.categoryName = categoryName;
         this.categoryDescription = categoryDescription;
         this.categoryImageUrl = categoryImageUrl;
     }
 
-//    public Category(String categoryName, String categoryDescription) {
-//        this.categoryName = categoryName;
-//        this.categoryDescription = categoryDescription;
-//    }
 
     public Long getCategoryId() {
         return categoryId;
