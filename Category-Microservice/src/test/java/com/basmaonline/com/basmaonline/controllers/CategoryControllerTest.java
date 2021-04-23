@@ -12,12 +12,17 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 
+import java.util.Optional;
+
+import static com.basmaonline.com.basmaonline.util.AbstractControllerTest.asJsonString;
 import static org.hamcrest.Matchers.*;
 import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -62,5 +67,70 @@ class CategoryControllerTest {
                 .andExpect(jsonPath("$[1].categoryImageUrl", is("category2.png")));
 
 
+    }
+
+    @Test
+    @DisplayName("GET /category/1")
+    void testGetCategoryById() throws Exception{
+        //Setup our mocked service
+        Category category = new Category(1L, "Phones", "This is a phones category", true, "phones.png");
+
+        //Execute the GET request
+        mockMvc.perform(get("/category/{categoryId}", 1L))
+                //validate the response code and content type
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+
+                //Validate headers
+                .andExpect(header().string(HttpHeaders.LOCATION, "/category/1"))
+                .andExpect(header().string(HttpHeaders.ETAG, "\"1\""))
+
+                //Validate the returned fields
+                .andExpect(jsonPath("$.categoryId", is(1)))
+                .andExpect(jsonPath("$.categoryName", is("Phones")))
+                .andExpect(jsonPath("$.categoryDescription", is("This is a phones category")))
+                .andExpect(jsonPath("$.categoryStatus", is(true)))
+                .andExpect(jsonPath("$.categoryImageUrl", is("phones.png")));
+    }
+
+    @Test
+    @DisplayName("GET /category/1 - Not Found")
+    void testGetWidgetByIdNotFound() throws Exception {
+        // Setup our mocked service
+        doReturn(Optional.empty()).when(categoryService).fetchCategoryById(1L);
+
+        // Execute the GET request
+        mockMvc.perform(get("/category/{categoryId}", 1L))
+                // Validate the response code
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
+    @DisplayName("POST /newCategory")
+    void testCreateWidget() throws Exception {
+        // Setup our mocked service
+        Category categoryToPost = new Category("Category1 Name", "Description category1", true, "category1.png");
+        Category categoryToReturn = new Category( 1L, "Category1 Name", "Description category1", true, "category1.png");
+        doReturn(categoryToReturn).when(categoryService).addCategory(any());
+
+        // Execute the POST request
+        mockMvc.perform(post("/newCategory")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(asJsonString(categoryToPost)))
+
+                // Validate the response code and content type
+                .andExpect(status().isCreated())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+
+                // Validate headers
+                .andExpect(header().string(HttpHeaders.LOCATION, "/newCategory"))
+                .andExpect(header().string(HttpHeaders.ETAG, "\"1\""))
+
+                // Validate the returned fields
+                .andExpect(jsonPath("$.categoryId", is(1)))
+                .andExpect(jsonPath("$.categoryName", is("New Category")))
+                .andExpect(jsonPath("$.categoryDescription", is("This is my category")))
+                .andExpect(jsonPath("$.categoryStatus", is(true)))
+                .andExpect(jsonPath("$.categoryImageUrl", is("category.png")));
     }
 }

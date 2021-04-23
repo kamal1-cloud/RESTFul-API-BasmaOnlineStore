@@ -41,6 +41,13 @@ public class Category implements Serializable {
         this.categoryImageUrl = categoryImageUrl;
     }
 
+    public Category(String categoryName, String categoryDescription, boolean categoryStatus, String categoryImageUrl) {
+        this.categoryName = categoryName;
+        this.categoryDescription = categoryDescription;
+        this.categoryStatus = categoryStatus;
+        this.categoryImageUrl = categoryImageUrl;
+    }
+
 
     public Long getCategoryId() {
         return categoryId;
