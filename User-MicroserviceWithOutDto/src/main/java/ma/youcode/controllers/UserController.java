@@ -3,6 +3,8 @@ package ma.youcode.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,7 +26,6 @@ import ma.youcode.requests.UserRequest;
 import ma.youcode.responses.ErrorMessages;
 import ma.youcode.responses.UserResponse;
 import ma.youcode.services.UserService;
-import ma.youcode.shared.UserDto;
 
 @RestController
 @RequestMapping("/users")
@@ -74,7 +75,7 @@ public class UserController {
 	@PostMapping(produces = { MediaType.APPLICATION_XML_VALUE,
 			MediaType.APPLICATION_JSON_VALUE }, consumes = { MediaType.APPLICATION_XML_VALUE,
 					MediaType.APPLICATION_JSON_VALUE })
-	public ResponseEntity<UserResponse> createUser(@RequestBody UserRequest userRequest) throws Exception {
+	public ResponseEntity<UserResponse> createUser(@RequestBody @Valid UserRequest userRequest) throws Exception {
 
 		if (userRequest.getFirstName().isEmpty())
 			throw new UserException(ErrorMessages.MISSING_REQUIRED_FIELD.getErrorMessage());	
