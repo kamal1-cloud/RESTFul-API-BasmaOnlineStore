@@ -14,7 +14,6 @@ import ma.youcode.repository.AddressRepository;
 import ma.youcode.repository.UserRepository;
 import ma.youcode.services.AddressService;
 import ma.youcode.shared.AddressDto;
-import ma.youcode.shared.UserDto;
 import ma.youcode.shared.Utils;
 
 @Service
@@ -27,76 +26,32 @@ public class AddressServiceImp implements AddressService {
 	@Autowired
 	UserRepository userRepository;
 
+//	@Override
+//	public List<AddressDto> getAllAddresses(String email) {
+//
+//		User currentUser = userRepository.findByEmail(email);
+//
+//		List<Address> addresses = currentUser.getAdmin() == true ? (List<Address>) addressRepository.findAll()
+//				: addressRepository.findByUser(currentUser);
+//
+//		Type listType = new TypeToken<List<AddressDto>>() {
+//		}.getType();
+//		List<AddressDto> addressesDto = new ModelMapper().map(addresses, listType);
+//
+//		return addressesDto;
+//	}
+
 	@Override
-	public List<AddressDto> getAllAddresses(String email) {
+	public Address createAddress(Address address, String email) {
 
 		User currentUser = userRepository.findByEmail(email);
-
-		// if User is admin  list all addresses
-		List<Address> addresses = currentUser.getAdmin() == true ? (List<Address>) addressRepository.findAll()
-				: addressRepository.findByUser(currentUser);
-
-//		List<Address> addresses = (List<Address>) addressRepository.findAll();
-		Type listType = new TypeToken<List<AddressDto>>() {}.getType();
-		List<AddressDto> addressesDto = new ModelMapper().map(addresses, listType);
-
-		return addressesDto;
+		Address adrr = address;
+		adrr.setUser(currentUser);
+		adrr.setAddressId(utils.genereteStringId(30));
+		Address newAddress = addressRepository.save(adrr);
+		return newAddress;
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	@Override
-	public AddressDto createAddress(AddressDto address, String email) {
-
-		User currentUser = userRepository.findByEmail(email);
-		
-		ModelMapper modelMapper = new ModelMapper();
-		UserDto userDto = modelMapper.map(currentUser, UserDto.class);
-		
-		
-		address.setAddressId(utils.genereteStringId(30));
-		address.setUser(userDto);
-
-		Address addressEntity = modelMapper.map(address, Address.class);
-		Address newAddress = addressRepository.save(addressEntity);
-		AddressDto addressDto = modelMapper.map(newAddress, AddressDto.class);
-		return addressDto;
-
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	@Override
 	public Address getAddress(String addressId) {
 		Address addressEntity = addressRepository.findByAddressId(addressId);
@@ -111,6 +66,12 @@ public class AddressServiceImp implements AddressService {
 			throw new RuntimeException("Address not found");
 		addressRepository.delete(address);
 
+	}
+
+	@Override
+	public List<AddressDto> getAllAddresses() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

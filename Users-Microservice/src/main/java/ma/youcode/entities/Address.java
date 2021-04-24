@@ -41,6 +41,8 @@ public class Address implements Serializable {
 	@JoinColumn(name = "users_id")
 	private User user;
 
+
+
 	public long getId() {
 		return id;
 	}
@@ -105,14 +107,14 @@ public class Address implements Serializable {
 		this.user = user;
 	}
 
-//	public Address(String city, String country, String street, String postal, String type) {
-//		super();
-//		this.city = city;
-//		this.country = country;
-//		this.street = street;
-//		this.postal = postal;
-//		this.type = type;
-//	}
+	public Address(String city, String country, String street, String postal, String type) {
+		super();
+		this.city = city;
+		this.country = country;
+		this.street = street;
+		this.postal = postal;
+		this.type = type;
+	}
 
 
 }

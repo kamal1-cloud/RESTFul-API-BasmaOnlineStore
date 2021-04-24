@@ -7,9 +7,9 @@ import ma.youcode.shared.AddressDto;
 
 public interface AddressService {
 
-	List<AddressDto> getAllAddresses(String email);
+	List<AddressDto> getAllAddresses();
 
-	AddressDto createAddress(AddressDto address, String email);
+	Address createAddress(Address address, String email);
 
 	Address getAddress(String addressId);
 
