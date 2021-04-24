@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,7 @@ import ma.youcode.requests.UserRequest;
 import ma.youcode.responses.ErrorMessages;
 import ma.youcode.responses.UserResponse;
 import ma.youcode.services.UserService;
+import ma.youcode.shared.UserDto;
 
 @RestController
 @RequestMapping("/users")
@@ -79,6 +81,15 @@ public class UserController {
 
 		if (userRequest.getFirstName().isEmpty())
 			throw new UserException(ErrorMessages.MISSING_REQUIRED_FIELD.getErrorMessage());	
+		
+//		ModelMapper modelMapper = new ModelMapper();
+//		User user = modelMapper.map(userRequest, User.class);
+//		
+//		User createUser = userService.createUser(user);
+//		
+//		UserResponse userResponse =  modelMapper.map(createUser, UserResponse.class);
+//		
+//		return new ResponseEntity<UserResponse>(userResponse, HttpStatus.CREATED);
 		User user = new User();
 		BeanUtils.copyProperties(userRequest, user);
 

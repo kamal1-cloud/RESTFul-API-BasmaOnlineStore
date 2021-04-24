@@ -1,22 +1,14 @@
 package ma.youcode.responses;
 
+import java.util.List;
+
 public class UserResponse {
 	private String userId;
 	private String firstName;
 	private String lastName;
 	private String email;
-//	private Boolean admin;
-//	private List<AddressResponse> addresses;
-	// private String password;
-//	private Role role;
-//
-//	public Role getRole() {
-//		return role;
-//	}
-//
-//	public void setRole(Role role) {
-//		this.role = role;
-//	}
+	private String role;
+	private List<AddressResponse> addresses;
 
 	public String getUserId() {
 		return userId;
@@ -42,14 +34,6 @@ public class UserResponse {
 		this.lastName = lastName;
 	}
 
-//	public List<AddressResponse> getAddresses() {
-//		return addresses;
-//	}
-//
-//	public void setAddresses(List<AddressResponse> addresses) {
-//		this.addresses = addresses;
-//	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -60,6 +44,20 @@ public class UserResponse {
 
 
 
+	public String getRole() {
+		return role;
+	}
 
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public List<AddressResponse> getAddresses() {
+		return addresses;
+	}
+
+	public void setAddresses(List<AddressResponse> addresses) {
+		this.addresses = addresses;
+	}
 
 }

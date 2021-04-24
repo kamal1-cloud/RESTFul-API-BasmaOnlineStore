@@ -1,5 +1,7 @@
 package ma.youcode.requests;
 
+import java.util.List;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -22,6 +24,12 @@ public class UserRequest {
 	@Size(max = 12, message = "mot de passe doit avoir au max 12 caracteres !")
 	@Pattern(regexp = "(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$", message = "ce mot de passe doit avoir des lettres en Maj et Minsc et numero")
 	private String password;
+
+	@Size(min = 4, message = "Ce champ doit avoir au moins 3 Caracteres !")
+	@NotNull(message = "Ce champ ne doit etre null !")
+	private String role;
+
+	private List<AddressRequest> addresses;
 
 	public String getFirstName() {
 		return firstName;
@@ -55,6 +63,20 @@ public class UserRequest {
 		this.password = password;
 	}
 
-//	private List<AddressRequest> addresses;
+	public List<AddressRequest> getAddresses() {
+		return addresses;
+	}
+
+	public void setAddresses(List<AddressRequest> addresses) {
+		this.addresses = addresses;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 
 }
