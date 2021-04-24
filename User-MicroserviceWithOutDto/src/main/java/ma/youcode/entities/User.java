@@ -1,12 +1,15 @@
 package ma.youcode.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity(name = "users")
@@ -18,7 +21,7 @@ public class User implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	@Column(nullable = true, length = 30)
 	private String userId;
 
@@ -34,20 +37,17 @@ public class User implements Serializable {
 	@Column(nullable = false)
 	private String password;
 
-//	@Column(nullable = true)
-//	private String encryptedPassword;
-
 	@Column(nullable = true)
 	private String emailVerificationToken;
 
 	@Column(nullable = false)
 	private Boolean emailVerificationStatus = false;
 
-//	@Column(nullable = false)
-//	private Boolean admin;
+	@Column(nullable = false, length = 20)
+	private String role;
 
-//	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL) // object
-//	private List<Address> addresses;
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL) // object
+	private List<Address> addresses;
 
 	public long getId() {
 		return id;
@@ -81,14 +81,6 @@ public class User implements Serializable {
 		this.email = email;
 	}
 
-//	public String getEncryptedPassword() {
-//		return encryptedPassword;
-//	}
-//
-//	public void setEncryptedPassword(String encryptedPassword) {
-//		this.encryptedPassword = encryptedPassword;
-//	}
-
 	public String getEmailVerificationToken() {
 		return emailVerificationToken;
 	}
@@ -121,13 +113,21 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-//	public List<Address> getAddresses() {
-//		return addresses;
-//	}
-//
-//	public void setAddresses(List<Address> addresses) {
-//		this.addresses = addresses;
-//	}
+	public List<Address> getAddresses() {
+		return addresses;
+	}
+
+	public void setAddresses(List<Address> addresses) {
+		this.addresses = addresses;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 
 //	public Boolean getAdmin() {
 //		return admin;

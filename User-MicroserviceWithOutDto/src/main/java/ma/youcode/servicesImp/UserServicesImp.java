@@ -5,7 +5,6 @@ package ma.youcode.servicesImp;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,7 +17,6 @@ import org.springframework.stereotype.Service;
 import ma.youcode.entities.User;
 import ma.youcode.repository.UserRepository;
 import ma.youcode.services.UserService;
-import ma.youcode.shared.UserDto;
 import ma.youcode.shared.Utils;
 
 @Service
@@ -37,13 +35,8 @@ public class UserServicesImp implements UserService {
 		User checkUser = userRepository.findByEmail(user.getEmail());
 		if (checkUser != null)
 			throw new RuntimeException("User Already Exist !!");
-//		
-//		User userEntity = new User();
-//		user.setEncryptedPassword("test");
-		user.setUserId("testId");
-//		userEntity.setEmail("test");
-//		userEntity.setFirstName("test");
-//		System.out.println("khadija");
+
+		
 		// Crypting password
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		// Genery idUser
@@ -53,41 +46,19 @@ public class UserServicesImp implements UserService {
 
 		return user;
 
-//		User checkUser = userRepository.findByEmail(user.getEmail());
-//		if (checkUser != null)
-//			throw new RuntimeException("User Already Exist !!");
-////		
-//	
-//		
-//		
-//		for (int i = 0; i < user.getAddresses().size(); i++) {
-//			AddressDto address = user.getAddresses().get(i);
-//			address.setUser(user);
-//			address.setAddressId(utils.genereteStringId(30));
-//			user.getAddresses().set(i, address);
-//		}
-//		
-//		ModelMapper modelMapper = new ModelMapper();
-//		User userEntities = modelMapper.map(user, User.class); 
-//		
-//		// Crypting password
-//		userEntities.setEncryptedPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-//		//Genery idUser
-//		userEntities.setUserId(utils.genereteStringId(32));
-//		
-//		// Pirsist in DB
-//		User newUser = userRepository.save(userEntities);
-//		 
-//		UserDto userDto = modelMapper.map(newUser, UserDto.class);
-//
-//		return userDto;
 	}
 
-//	@Override
-//	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	@Override
 	// Récupérer User vai son adresse Email
