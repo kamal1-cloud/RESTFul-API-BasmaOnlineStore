@@ -12,7 +12,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 import java.util.Optional;
@@ -95,7 +94,7 @@ class CategoryControllerTest {
 
     @Test
     @DisplayName("GET /category/1 - Not Found")
-    void testGetWidgetByIdNotFound() throws Exception {
+    void testGetCatgeoryByIdNotFound() throws Exception {
         // Setup our mocked service
         doReturn(Optional.empty()).when(categoryService).fetchCategoryById(1L);
 
@@ -107,7 +106,7 @@ class CategoryControllerTest {
 
     @Test
     @DisplayName("POST /newCategory")
-    void testCreateWidget() throws Exception {
+    void testCreateCatgeory() throws Exception {
         // Setup our mocked service
         Category categoryToPost = new Category("Category1 Name", "Description category1", true, "category1.png");
         Category categoryToReturn = new Category( 1L, "Category1 Name", "Description category1", true, "category1.png");
