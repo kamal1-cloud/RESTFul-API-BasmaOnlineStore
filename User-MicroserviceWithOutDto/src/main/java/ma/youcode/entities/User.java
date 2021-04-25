@@ -27,6 +27,11 @@ public class User implements Serializable {
 
 	@Column(nullable = false, length = 60)
 	private String lastName;
+	@Column(nullable = false)
+	private String countact;
+
+	@Column(nullable = false)
+	private String addresse;
 
 	@Column(nullable = false, length = 120, unique = true)
 	private String email;
@@ -41,7 +46,7 @@ public class User implements Serializable {
 	private Boolean emailVerificationStatus = false;
 
 	@Column(nullable = true, length = 20)
-	private String role = "USER";
+	private String role;
 
 	@Column(nullable = false)
 	private boolean accepte = true;
@@ -124,6 +129,22 @@ public class User implements Serializable {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public String getCountact() {
+		return countact;
+	}
+
+	public void setCountact(String countact) {
+		this.countact = countact;
+	}
+
+	public String getAddresse() {
+		return addresse;
+	}
+
+	public void setAddresse(String addresse) {
+		this.addresse = addresse;
 	}
 
 }

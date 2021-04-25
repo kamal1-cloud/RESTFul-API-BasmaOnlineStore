@@ -7,6 +7,10 @@ public class UserResponse {
 	private String email;
 	private boolean accepte;
 
+	private String countact;
+
+	private String addresse;
+
 	public boolean isAccepte() {
 		return accepte;
 	}
@@ -55,6 +59,22 @@ public class UserResponse {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public String getCountact() {
+		return countact;
+	}
+
+	public void setCountact(String countact) {
+		this.countact = countact;
+	}
+
+	public String getAddresse() {
+		return addresse;
+	}
+
+	public void setAddresse(String addresse) {
+		this.addresse = addresse;
 	}
 
 }

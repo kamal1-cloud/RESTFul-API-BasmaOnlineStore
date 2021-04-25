@@ -27,8 +27,15 @@ public class UserRequest {
 	private String password;
 
 	@NotNull(message = "Ce champ ne doit etre null !")
+	@Size(max = 14, message = "Ce champ doit avoir au moins 3 Caracteres !")
+	private String countact;
+
+	@NotNull(message = "Ce champ ne doit etre null !")
+	private String addresse;
+
+	@NotNull(message = "Ce champ ne doit etre null !")
 	@Size(min = 4, message = "Ce champ doit avoir au moins 3 Caracteres !")
-	private String role = "USER";
+	private String role;
 
 	@NotNull
 	private boolean accepte = true;
@@ -79,6 +86,22 @@ public class UserRequest {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public String getCountact() {
+		return countact;
+	}
+
+	public void setCountact(String countact) {
+		this.countact = countact;
+	}
+
+	public String getAddresse() {
+		return addresse;
+	}
+
+	public void setAddresse(String addresse) {
+		this.addresse = addresse;
 	}
 
 }

@@ -80,9 +80,8 @@ public class UserController {
 
 		if (userRequest.getFirstName().isEmpty())
 			throw new UserException(ErrorMessages.MISSING_REQUIRED_FIELD.getErrorMessage());
-		if(userRequest.isAccepte()) {
-			SentEmail.sendEmail(userRequest.getEmail(), "You're accepted");	
-		}
+	
+	
 
 		User user = new User();
 		BeanUtils.copyProperties(userRequest, user);
