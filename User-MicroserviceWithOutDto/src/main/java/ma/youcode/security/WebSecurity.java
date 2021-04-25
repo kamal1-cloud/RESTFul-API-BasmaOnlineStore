@@ -29,12 +29,17 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 		.authorizeRequests()
 		.antMatchers(HttpMethod.POST,SecurityConstants.SIGN_UP_URL)
 		.permitAll()
+		.antMatchers(HttpMethod.PUT,SecurityConstants.SIGN_UP_URL).hasAnyAuthority("ADMIN","USER")
+		.antMatchers(HttpMethod.DELETE,SecurityConstants.SIGN_UP_URL).hasAnyAuthority("ADMIN")
+		.antMatchers(HttpMethod.GET,SecurityConstants.SIGN_UP_URL).hasAnyAuthority("ADMIN")
+		.antMatchers(HttpMethod.GET,"/users/id").hasAnyAuthority("USER")
 		.anyRequest().authenticated()
 		.and()
 		.addFilter(getAuthenticatedFilter())
 		.addFilter(new AutorizationFilter(authenticationManager()));
 	
 	}
+
 //
 //	@Override
 //	protected void configure(HttpSecurity http) throws Exception {
@@ -56,7 +61,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 //		
 //	}
 //
-	//Url for login
+	// Url for login
 	protected AuthenticationFilter getAuthenticatedFilter() throws Exception {
 		final AuthenticationFilter filter = new AuthenticationFilter(authenticationManager());
 		filter.setFilterProcessesUrl("/users/login");

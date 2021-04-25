@@ -3,13 +3,14 @@ package ma.youcode.responses;
 import java.util.Date;
 
 public class ErrorMessage {
+	
 	private Date timestamp;
-	private String messege;
+	private String message;
 
-	public ErrorMessage(Date timestamp, String messege) {
+	public ErrorMessage(Date timestamp, String message) {
 		super();
 		this.timestamp = timestamp;
-		this.messege = messege;
+		this.message = message;
 	}
 
 	public Date getTimestamp() {
@@ -20,12 +21,14 @@ public class ErrorMessage {
 		this.timestamp = timestamp;
 	}
 
-	public String getMessege() {
-		return messege;
+	public String getMessage() {
+		return message;
 	}
 
-	public void setMessege(String messege) {
-		this.messege = messege;
+	public void setMessage(String message) {
+		this.message = message;
 	}
+	
+	
 
 }

@@ -1,7 +1,5 @@
 package ma.youcode.servicesImp;
 
-
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +34,6 @@ public class UserServicesImp implements UserService {
 		if (checkUser != null)
 			throw new RuntimeException("User Already Exist !!");
 
-		
 		// Crypting password
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		// Genery idUser
@@ -47,18 +44,6 @@ public class UserServicesImp implements UserService {
 		return user;
 
 	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 	@Override
 	// Récupérer User vai son adresse Email
@@ -74,7 +59,6 @@ public class UserServicesImp implements UserService {
 	
 	
 	
-	
 
 	@Override
 	public User getUser(String email) {
@@ -85,17 +69,18 @@ public class UserServicesImp implements UserService {
 		return userEntities;
 	}
 
-//
-//	
-//	
-//	
-//	
-//	
-//	
-//	
-//	
-//	
-//	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@Override
 	public User getUserByUserId(String userId) {
 		User userEntities = userRepository.findByUserId(userId);
@@ -107,11 +92,6 @@ public class UserServicesImp implements UserService {
 	
 	
 	
-	
-	
-	
-	
-	
 	@Override
 	public User updateUser(String userId, User userUp) {
 		User userEntities = userRepository.findByUserId(userId);
@@ -119,25 +99,20 @@ public class UserServicesImp implements UserService {
 			throw new UsernameNotFoundException(userId);
 		userEntities.setFirstName(userUp.getFirstName());
 		userEntities.setLastName(userUp.getLastName());
-		User userEntity = userRepository.save(userEntities);
+		userRepository.save(userEntities);
 //		UserDto user = new UserDto();
 //		BeanUtils.copyProperties(userEntity, user);
 
 		return userUp;
 
 	}
+	
+	
+	
+	
+	
+	
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	@Override
 	public void deleteUser(String userId) {
 		User userEntities = userRepository.findByUserId(userId);
@@ -146,22 +121,10 @@ public class UserServicesImp implements UserService {
 		userRepository.delete(userEntities);
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	@Override
 	public List<User> getUsers(int page, int limit) {
-		if(page > 0 )page -=1; 
+		if (page > 0)
+			page -= 1;
 		List<User> userList = new ArrayList<>();
 		Pageable pageableRequest = PageRequest.of(page, limit);
 		Page<User> userPage = userRepository.findAll(pageableRequest);
@@ -174,14 +137,5 @@ public class UserServicesImp implements UserService {
 
 		return userList;
 	}
-
-	
-	
-	
-	
-	
-	
-
-
 
 }

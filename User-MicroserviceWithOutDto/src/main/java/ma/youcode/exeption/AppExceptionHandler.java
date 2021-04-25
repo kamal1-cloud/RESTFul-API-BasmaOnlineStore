@@ -15,23 +15,24 @@ import org.springframework.web.context.request.WebRequest;
 import ma.youcode.responses.ErrorMessage;
 
 @ControllerAdvice
-public class AppExeptionHandler {
-	@ExceptionHandler(value = (UserException.class))
-	public ResponseEntity<Object> HandleUserExeption(UserException ex, WebRequest request) {
+public class AppExceptionHandler {
 
+	@ExceptionHandler(value={UserException.class})
+	public ResponseEntity<Object> HandleUserException(UserException ex, WebRequest request) 
+	{
 		ErrorMessage errorMessage = new ErrorMessage(new Date(), ex.getMessage());
+		
 		return new ResponseEntity<>(errorMessage, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
-
 	}
-
-	@ExceptionHandler(value = Exception.class)
-	public ResponseEntity<Object> HandleExeption(Exception ex, WebRequest request) {
-
+	
+	@ExceptionHandler(value=Exception.class)
+	public ResponseEntity<Object> HandleOtherExceptions(Exception ex, WebRequest request) 
+	{
 		ErrorMessage errorMessage = new ErrorMessage(new Date(), ex.getMessage());
+		
 		return new ResponseEntity<>(errorMessage, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
-
 	}
-
+	
 	@ExceptionHandler(value=MethodArgumentNotValidException.class)
 	public ResponseEntity<Object> HandleMethodArgumentNotValid(MethodArgumentNotValidException ex, WebRequest request) 
 	{
@@ -42,5 +43,5 @@ public class AppExeptionHandler {
 		
 		return new ResponseEntity<>(errors, new HttpHeaders(), HttpStatus.BAD_REQUEST);
 	}
-
+	
 }

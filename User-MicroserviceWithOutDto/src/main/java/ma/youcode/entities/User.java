@@ -43,11 +43,8 @@ public class User implements Serializable {
 	@Column(nullable = false)
 	private Boolean emailVerificationStatus = false;
 
-	@Column(nullable = false, length = 20)
-	private String role;
-
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL) // object
-	private List<Address> addresses;
+	@Column(nullable = true, length = 20)
+	private String role ="USER";
 
 	public long getId() {
 		return id;
@@ -113,13 +110,6 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public List<Address> getAddresses() {
-		return addresses;
-	}
-
-	public void setAddresses(List<Address> addresses) {
-		this.addresses = addresses;
-	}
 
 	public String getRole() {
 		return role;
@@ -128,13 +118,5 @@ public class User implements Serializable {
 	public void setRole(String role) {
 		this.role = role;
 	}
-
-//	public Boolean getAdmin() {
-//		return admin;
-//	}
-
-//	public void setAdmin(Boolean admin) {
-//		this.admin = admin;
-//	}
 
 }

@@ -7,8 +7,8 @@ public class UserResponse {
 	private String firstName;
 	private String lastName;
 	private String email;
+
 	private String role;
-	private List<AddressResponse> addresses;
 
 	public String getUserId() {
 		return userId;
@@ -42,22 +42,12 @@ public class UserResponse {
 		this.email = email;
 	}
 
-
-
 	public String getRole() {
 		return role;
 	}
 
 	public void setRole(String role) {
 		this.role = role;
-	}
-
-	public List<AddressResponse> getAddresses() {
-		return addresses;
-	}
-
-	public void setAddresses(List<AddressResponse> addresses) {
-		this.addresses = addresses;
 	}
 
 }
