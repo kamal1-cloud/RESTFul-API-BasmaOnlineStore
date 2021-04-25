@@ -80,8 +80,11 @@ public class UserController {
 
 		if (userRequest.getFirstName().isEmpty())
 			throw new UserException(ErrorMessages.MISSING_REQUIRED_FIELD.getErrorMessage());
-	
-	
+		//Send Email Validation
+		if(userRequest.isAccepte()) {
+			SentEmail.sendEmail(userRequest.getEmail(), "Dear "+ userRequest.getFirstName()+ " "+userRequest.getLastName()+" "+" ! \r\n "
+					+ "Welcome to your account BasmaOnlineStore :)");	
+		}
 
 		User user = new User();
 		BeanUtils.copyProperties(userRequest, user);
