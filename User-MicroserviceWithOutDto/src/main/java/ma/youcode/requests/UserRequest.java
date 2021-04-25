@@ -1,5 +1,6 @@
 package ma.youcode.requests;
 
+import javax.persistence.Column;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -27,7 +28,18 @@ public class UserRequest {
 
 	@NotNull(message = "Ce champ ne doit etre null !")
 	@Size(min = 4, message = "Ce champ doit avoir au moins 3 Caracteres !")
-	private String role ="USER";
+	private String role = "USER";
+
+	@NotNull
+	private boolean accepte = true;
+
+	public boolean isAccepte() {
+		return accepte;
+	}
+
+	public void setAccepte(boolean accepte) {
+		this.accepte = accepte;
+	}
 
 	public String getFirstName() {
 		return firstName;

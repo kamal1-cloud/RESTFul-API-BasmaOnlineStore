@@ -1,15 +1,12 @@
 package ma.youcode.entities;
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity(name = "users")
@@ -44,7 +41,18 @@ public class User implements Serializable {
 	private Boolean emailVerificationStatus = false;
 
 	@Column(nullable = true, length = 20)
-	private String role ="USER";
+	private String role = "USER";
+
+	@Column(nullable = false)
+	private boolean accepte = true;
+
+	public boolean isAccepte() {
+		return accepte;
+	}
+
+	public void setAccepte(boolean accepte) {
+		this.accepte = accepte;
+	}
 
 	public long getId() {
 		return id;
@@ -109,7 +117,6 @@ public class User implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 
 	public String getRole() {
 		return role;

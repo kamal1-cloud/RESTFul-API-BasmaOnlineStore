@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ma.youcode.entities.User;
 import ma.youcode.exeption.UserException;
+import ma.youcode.repository.SentEmail;
 import ma.youcode.requests.UserRequest;
 import ma.youcode.responses.ErrorMessages;
 import ma.youcode.responses.UserResponse;
@@ -78,7 +79,10 @@ public class UserController {
 	public ResponseEntity<UserResponse> createUser(@RequestBody @Valid UserRequest userRequest) throws Exception {
 
 		if (userRequest.getFirstName().isEmpty())
-			throw new UserException(ErrorMessages.MISSING_REQUIRED_FIELD.getErrorMessage());	
+			throw new UserException(ErrorMessages.MISSING_REQUIRED_FIELD.getErrorMessage());
+		if(userRequest.isAccepte()) {
+			SentEmail.sendEmail(userRequest.getEmail(), "You're accepted");	
+		}
 
 		User user = new User();
 		BeanUtils.copyProperties(userRequest, user);

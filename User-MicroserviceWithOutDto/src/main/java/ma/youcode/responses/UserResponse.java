@@ -1,12 +1,19 @@
 package ma.youcode.responses;
 
-import java.util.List;
-
 public class UserResponse {
 	private String userId;
 	private String firstName;
 	private String lastName;
 	private String email;
+	private boolean accepte;
+
+	public boolean isAccepte() {
+		return accepte;
+	}
+
+	public void setAccepte(boolean accepte) {
+		this.accepte = accepte;
+	}
 
 	private String role;
 
