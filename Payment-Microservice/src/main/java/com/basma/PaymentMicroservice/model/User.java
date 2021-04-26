@@ -7,7 +7,7 @@ public class User {
     private static final long serialVersionUID = 7166826084650146588L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(nullable = true, length = 30)
     private String userId;
@@ -30,11 +30,11 @@ public class User {
     @Column(nullable = false)
     private Boolean emailVerificationStatus = false;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
