@@ -1,5 +1,6 @@
 package ma.youcode.store.Controller;
 
+import ma.youcode.store.Model.Images;
 import ma.youcode.store.Model.Products;
 import ma.youcode.store.Services.ProductServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,8 @@ public class ProductController {
     // Insert Product record
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Products newUser(@RequestBody Products product) {
+    public Products newProduct(@RequestBody Products product) {
+
         return productServices.save(product);
     }
 
