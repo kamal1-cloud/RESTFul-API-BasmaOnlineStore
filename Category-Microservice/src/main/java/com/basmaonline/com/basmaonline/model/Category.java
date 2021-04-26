@@ -12,16 +12,16 @@ public class Category implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long categoryId;
 
-    @Column(name = "categoryName", nullable = false, length = 55)
+    @Column(name = "category_name", nullable = false, length = 55)
     private String categoryName;
 
-    @Column(name = "categoryDescription", nullable = false, length = 250)
+    @Column(name = "category_description", nullable = false, length = 250)
     private String categoryDescription; // MIN
 
-    @Column(name = "categoryStatus", columnDefinition = "BOOLEAN DEFAULT true")
+    @Column(name = "category_status", columnDefinition = "BOOLEAN DEFAULT true")
     private boolean categoryStatus; // true
 
-    @Column(name = "categoryImage")
+    @Column(name = "category_image")
     private String categoryImageUrl;
 
     public Category() {
