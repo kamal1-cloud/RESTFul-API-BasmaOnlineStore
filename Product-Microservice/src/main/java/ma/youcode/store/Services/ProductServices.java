@@ -3,9 +3,10 @@ package ma.youcode.store.Services;
 import ma.youcode.store.Model.Products;
 import ma.youcode.store.Repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class ProductServices {
     @Autowired
     ProductRepository productRepository;

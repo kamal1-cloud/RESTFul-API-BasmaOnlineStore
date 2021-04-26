@@ -14,8 +14,9 @@ public class SentEmail {
 	public static void sendEmail(String emailTo, String mailMessage) {
 
 		// Sender's email ID needs to be mentioned
-		final String from = "khadijaezzayany8@gmail.com";
-		final String password = "fvzhutyuqmodfnes";
+		final String from = "onlinebasma5@gmail.com";
+		final String password = "owoqszcnvprdilyi\r\n"
+				+ "";
 
 		// Get system properties
 		Properties properties = new Properties();
