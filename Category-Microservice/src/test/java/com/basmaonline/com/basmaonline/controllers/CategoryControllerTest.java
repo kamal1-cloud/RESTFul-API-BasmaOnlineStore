@@ -46,12 +46,12 @@ class CategoryControllerTest {
         // Execute the GET request
         mockMvc.perform(get("/categories"))
                 // Validate the response code and content type
+
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
 
                 // Validate headers
                 .andExpect(header().string(HttpHeaders.LOCATION, "/categories"))
-
                 // Validate the returned fields
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].categoryId", is(1)))
@@ -64,8 +64,6 @@ class CategoryControllerTest {
                 .andExpect(jsonPath("$[1].categoryDescription", is("Description category2")))
                 .andExpect(jsonPath("$[1].categoryStatus", is(true)))
                 .andExpect(jsonPath("$[1].categoryImageUrl", is("category2.png")));
-
-
     }
 
     @Test
