@@ -29,7 +29,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 		.authorizeRequests()
 		.antMatchers(HttpMethod.POST,SecurityConstants.SIGN_UP_URL)
 		.permitAll()
-//		.antMatchers(HttpMethod.PUT,SecurityConstants.SIGN_UP_URL).hasAnyAuthority("ADMIN","USER")
+		.antMatchers(HttpMethod.GET, "/users/**").permitAll()
 //		.antMatchers(HttpMethod.DELETE,SecurityConstants.SIGN_UP_URL).hasAnyAuthority("ADMIN")
 //		.antMatchers(HttpMethod.GET,SecurityConstants.SIGN_UP_URL).hasAnyAuthority("ADMIN")
 //		.antMatchers(HttpMethod.GET,"/users/id").hasAnyAuthority("USER")

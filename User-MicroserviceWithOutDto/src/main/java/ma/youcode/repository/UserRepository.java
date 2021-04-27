@@ -10,6 +10,8 @@ import ma.youcode.entities.User;
 @Repository
 public interface UserRepository extends PagingAndSortingRepository<User, Long> {
 
+    User findByEmailIdIgnoreCase(String emailId);
+
 	User findByEmail(String email);
 	
 	User findByUserId(String userId);

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,15 +18,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
+import ma.youcode.entities.ConfirmationToken;
 import ma.youcode.entities.User;
 import ma.youcode.exeption.UserException;
-import ma.youcode.repository.SentEmail;
+import ma.youcode.repository.ConfirmationTokenRepository;
+import ma.youcode.repository.UserRepository;
 import ma.youcode.requests.UserRequest;
 import ma.youcode.responses.ErrorMessages;
 import ma.youcode.responses.UserResponse;
+import ma.youcode.services.EmailSenderService;
 import ma.youcode.services.UserService;
 
 @RestController
@@ -35,26 +41,33 @@ public class UserController {
 	@Autowired
 	UserService userService;
 
+	@Autowired
+	UserRepository userRepository;
+	@Autowired
+	private ConfirmationTokenRepository confirmationTokenRepository;
+
+	@Autowired
+	private EmailSenderService emailSenderService;
 	
 	
+	
+
 	@GetMapping(path = "/{id}", produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<UserResponse> getUser(@PathVariable String id) {
 		User userEntity = userService.getUserByUserId(id);
 		UserResponse userResponse = new UserResponse();
 		BeanUtils.copyProperties(userEntity, userResponse);
-		return new ResponseEntity<UserResponse>(userResponse,HttpStatus.OK);
+		return new ResponseEntity<UserResponse>(userResponse, HttpStatus.OK);
 	}
-	
-	
-	
+
 	
 	
 	
 	
 	
 	@GetMapping(produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
-	public List<UserResponse> getAllUsers(@RequestParam(value = "page" , defaultValue = "1") int page,
-			@RequestParam(value = "limit",defaultValue = "5") int limit) {
+	public List<UserResponse> getAllUsers(@RequestParam(value = "page", defaultValue = "1") int page,
+			@RequestParam(value = "limit", defaultValue = "5") int limit) {
 		List<UserResponse> usersResponse = new ArrayList<>();
 		List<User> users = userService.getUsers(page, limit);
 		for (User userFor : users) {
@@ -72,29 +85,72 @@ public class UserController {
 	
 	
 	
+	
+	
+	
+	
 
-	@PostMapping(produces = { MediaType.APPLICATION_XML_VALUE,
-			MediaType.APPLICATION_JSON_VALUE }, consumes = { MediaType.APPLICATION_XML_VALUE,
-					MediaType.APPLICATION_JSON_VALUE })
+	@PostMapping(produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE }, consumes = {
+			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<UserResponse> createUser(@RequestBody @Valid UserRequest userRequest) throws Exception {
 
 		if (userRequest.getFirstName().isEmpty())
 			throw new UserException(ErrorMessages.MISSING_REQUIRED_FIELD.getErrorMessage());
-		//Send Email Validation
-		if(userRequest.isAccepte()) {
-			SentEmail.sendEmail(userRequest.getEmail(), "Dear "+ userRequest.getFirstName()+ " "+userRequest.getLastName()+" "+" ! \r\n "
-					+ "Welcome to your account BasmaOnlineStore :)");	
-		}
+		// Send Email Validation
+//		if (userRequest.isAccepte()) {
+//			SentEmail.sendEmail(userRequest.getEmail(), "Dear " + userRequest.getFirstName() + " "
+//					+ userRequest.getLastName() + " " + " ! \r\n " + "Welcome to your account BasmaOnlineStore :)");
+//		}
 
 		User user = new User();
 		BeanUtils.copyProperties(userRequest, user);
 
 		User createUser = userService.createUser(user);
+		
+		
+		
+		
+        ConfirmationToken confirmationToken = new ConfirmationToken(user);
+        confirmationTokenRepository.save(confirmationToken);
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setTo(user.getEmail());
+        mailMessage.setSubject("Complete Registration!");
+        mailMessage.setFrom("chand312902@gmail.com");
+        mailMessage.setText("To confirm your account, please click here : "
+        +"http://localhost:8080/users/confirm-account?token="+confirmationToken.getConfirmationToken());
+        emailSenderService.sendEmail(mailMessage);
+        
+        
+        
+        
 		UserResponse userResponse = new UserResponse();
 
 		BeanUtils.copyProperties(createUser, userResponse);
-		return new ResponseEntity<UserResponse>(userResponse,HttpStatus.CREATED);
+		return new ResponseEntity<UserResponse>(userResponse, HttpStatus.CREATED);
 	}
+
+	
+	
+	
+	
+    @RequestMapping(value="/confirm-account", method= RequestMethod.GET)
+    public String confirmUserAccount(@RequestParam("token")String confirmationToken)
+    {
+        ConfirmationToken token = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
+
+        if(token != null)
+        {
+            User user = userRepository.findByEmail(token.getUser().getEmail());
+            user.setEnabled(true);
+            userRepository.save(user);
+            return "slm";
+        }
+        else
+        {
+            return "not khf";
+        }
+    }
+	    // getters and setters
 	
 	
 	
@@ -105,7 +161,12 @@ public class UserController {
 	
 	
 	
-	@DeleteMapping(path = "/{id}",produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
+	
+	
+	
+	
+	
+	@DeleteMapping(path = "/{id}", produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<Object> deleteUser(@PathVariable String id) {
 		userService.deleteUser(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -117,6 +178,15 @@ public class UserController {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+
 	@PutMapping(path = "/{id}", produces = { MediaType.APPLICATION_XML_VALUE,
 			MediaType.APPLICATION_JSON_VALUE }, consumes = { MediaType.APPLICATION_XML_VALUE,
 					MediaType.APPLICATION_JSON_VALUE })
@@ -124,12 +194,12 @@ public class UserController {
 	public ResponseEntity<UserResponse> updateUser(@PathVariable String id, @RequestBody UserRequest userRequest) {
 		User user = new User();
 		BeanUtils.copyProperties(userRequest, user);
-		
-		User updateUser = userService.updateUser(id,user);
+
+		User updateUser = userService.updateUser(id, user);
 		UserResponse userResponse = new UserResponse();
 
 		BeanUtils.copyProperties(updateUser, userResponse);
-		return new ResponseEntity<UserResponse>(userResponse,HttpStatus.ACCEPTED);
+		return new ResponseEntity<UserResponse>(userResponse, HttpStatus.ACCEPTED);
 	}
 
 }

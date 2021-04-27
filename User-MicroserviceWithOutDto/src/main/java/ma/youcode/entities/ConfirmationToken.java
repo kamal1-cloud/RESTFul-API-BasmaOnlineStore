@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.UUID;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,9 +14,10 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+@Entity
 public class ConfirmationToken {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "token_id")
 	private long tokenid;
 
@@ -33,6 +35,9 @@ public class ConfirmationToken {
 		this.user = user;
 		createdDate = new Date();
 		confirmationToken = UUID.randomUUID().toString();
+	}
+	public ConfirmationToken() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public long getTokenid() {

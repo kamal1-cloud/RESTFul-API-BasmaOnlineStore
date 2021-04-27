@@ -1,6 +1,7 @@
 package ma.youcode.servicesImp;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class UserServicesImp implements UserService {
 		User checkUser = userRepository.findByEmail(user.getEmail());
 		if (checkUser != null)
 			throw new RuntimeException("User Already Exist !!");
-
+		user.setTime(new Date());
 		// Crypting password
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		// Genery idUser
