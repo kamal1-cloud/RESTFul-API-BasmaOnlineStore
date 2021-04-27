@@ -61,7 +61,7 @@ public class UserServicesImp implements UserService {
 	
 
 	@Override
-	public User getUser(String email) {
+	public User getUser(String email)  {
 
 		User userEntities = userRepository.findByEmail(email);
 		if (userEntities == null)
@@ -89,6 +89,13 @@ public class UserServicesImp implements UserService {
 		return userEntities;
 	}
 
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -120,6 +127,14 @@ public class UserServicesImp implements UserService {
 			throw new UsernameNotFoundException(userId);
 		userRepository.delete(userEntities);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 
 	@Override
 	public List<User> getUsers(int page, int limit) {

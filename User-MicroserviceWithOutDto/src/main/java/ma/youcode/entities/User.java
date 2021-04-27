@@ -49,7 +49,7 @@ public class User implements Serializable {
 	private String role;
 
 	@Column(nullable = false)
-	private boolean accepte = true;
+	private boolean accepte;
 
 	public boolean isAccepte() {
 		return accepte;

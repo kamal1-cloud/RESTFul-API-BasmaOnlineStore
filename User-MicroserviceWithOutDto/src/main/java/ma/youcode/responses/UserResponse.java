@@ -1,11 +1,22 @@
 package ma.youcode.responses;
 
+import java.util.Date;
+
 public class UserResponse {
 	private String userId;
 	private String firstName;
 	private String lastName;
 	private String email;
 	private boolean accepte;
+//	private Date timeCreated;
+
+//	public Date getTimeCreated() {
+//		return timeCreated;
+//	}
+//
+//	public void setTimeCreated(Date timeCreated) {
+//		this.timeCreated = timeCreated;
+//	}
 
 	private String countact;
 
