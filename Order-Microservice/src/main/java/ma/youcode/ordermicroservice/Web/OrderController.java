@@ -1,55 +1,50 @@
-package ma.youcode.store.Controller;
+package ma.youcode.ordermicroservice.Web;
 
-
-import ma.youcode.store.Model.Products;
-import ma.youcode.store.Services.ProductServices;
+import ma.youcode.ordermicroservice.Models.Orders;
+import ma.youcode.ordermicroservice.Services.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/product")
-public class ProductController {
+@RequestMapping("/order")
+public class OrderController {
     @Autowired
-    ProductServices productServices;
-
-    // Fetch all Products records
+    OrdersService ordersService;
     @GetMapping
-    public List<Products> listProducts() {
-        return productServices.listAll();
+    public List<Orders> listOrders(){
+      return ordersService.listOrders();
     }
-
-    // Insert Product record
+    // Insert Order record
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Products newProduct(@RequestBody Products product) {
+    public Orders newProduct(@RequestBody Orders order) {
 
-        return productServices.save(product);
+        return ordersService.saveOrder(order);
     }
 
-//    Find Product by id
+//    Find Order by id
 
     @GetMapping("/{id}")
-    public ResponseEntity<Products> get(@PathVariable Long id) {
+    public ResponseEntity<Orders> get(@PathVariable Long id) {
         try {
-            Products product = productServices.getById(id);
-            return new ResponseEntity<>(product, HttpStatus.OK);
+            Orders order = ordersService.getOrderByid(id);
+            return new ResponseEntity<>(order, HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
-    // Update Product record
+    // Update Order record
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@RequestBody Products product, @PathVariable Long id) {
+    public ResponseEntity<?> update(@RequestBody Orders order, @PathVariable Long id) {
         try {
-            Products existProduct = productServices.getById(id);
-            productServices.save(product);
+            Orders existOrders = ordersService.getOrderByid(id);
+            ordersService.saveOrder(order);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -57,9 +52,9 @@ public class ProductController {
     }
     // Delete Product
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteUser(@PathVariable Long id){
+    public ResponseEntity<String> deleteOrder(@PathVariable Long id){
         try {
-            productServices.delete(id);
+            ordersService.deleteOrder(id);
             return new ResponseEntity<String>(HttpStatus.OK);
         }catch(RuntimeException ex){
             // log the error message
