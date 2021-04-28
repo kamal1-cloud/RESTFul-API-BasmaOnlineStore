@@ -70,7 +70,7 @@ class CategoryServiceImplTest {
         Category returnedCategory = categoryService.addCategory(category);
 
         // Assert the response
-        Assertions.assertNotNull(returnedCategory, "The saved widget should not be null");
+        Assertions.assertNotNull(returnedCategory, "The saved category should not be null");
         Assertions.assertEquals("Watches", returnedCategory.getCategoryName(), "Category Found");
     }
 

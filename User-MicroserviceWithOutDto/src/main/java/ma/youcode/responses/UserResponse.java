@@ -1,22 +1,43 @@
 package ma.youcode.responses;
 
+import java.util.Date;
+
 public class UserResponse {
 	private String userId;
 	private String firstName;
 	private String lastName;
 	private String email;
-	private boolean accepte;
+//	private boolean accepte;
+//	private Date timeCreated;
+
+//	public Date getTimeCreated() {
+//		return timeCreated;
+//	}
+//
+//	public void setTimeCreated(Date timeCreated) {
+//		this.timeCreated = timeCreated;
+//	}
 
 	private String countact;
 
 	private String addresse;
 
-	public boolean isAccepte() {
-		return accepte;
+	private Date time;
+
+//	public boolean isAccepte() {
+//		return accepte;
+//	}
+//
+//	public void setAccepte(boolean accepte) {
+//		this.accepte = accepte;
+//	}
+
+	public Date getTime() {
+		return time;
 	}
 
-	public void setAccepte(boolean accepte) {
-		this.accepte = accepte;
+	public void setTime(Date time) {
+		this.time = time;
 	}
 
 	private String role;

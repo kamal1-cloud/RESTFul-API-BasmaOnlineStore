@@ -1,5 +1,7 @@
 package ma.youcode.requests;
 
+import java.util.Date;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -35,15 +37,24 @@ public class UserRequest {
 	@Size(min = 4, message = "Ce champ doit avoir au moins 3 Caracteres !")
 	private String role;
 
-	@NotNull
-	private boolean accepte = true;
+	private Date time;
 
-	public boolean isAccepte() {
-		return accepte;
+//	@NotNull
+//	private Date timeCreated;
+
+//	@NotNull
+//	private boolean accepte = true;
+
+//	public void setAccepte(boolean accepte) {
+//		this.accepte = accepte;
+//	}
+
+	public Date getTime() {
+		return time;
 	}
 
-	public void setAccepte(boolean accepte) {
-		this.accepte = accepte;
+	public void setTime(Date time) {
+		this.time = time;
 	}
 
 	public String getFirstName() {
@@ -101,5 +112,17 @@ public class UserRequest {
 	public void setAddresse(String addresse) {
 		this.addresse = addresse;
 	}
+//
+//	public Date getTimeCreated() {
+//		return timeCreated;
+//	}
+//
+//	public void setTimeCreated(Date timeCreated) {
+//		this.timeCreated = timeCreated;
+//	}
+
+//	public boolean isAccepte() {
+//		return accepte;
+//	}
 
 }

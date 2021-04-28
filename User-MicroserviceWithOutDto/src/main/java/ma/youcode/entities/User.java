@@ -1,6 +1,7 @@
 package ma.youcode.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,6 +37,8 @@ public class User implements Serializable {
 	@Column(nullable = false, length = 120, unique = true)
 	private String email;
 
+	private String emailId;
+
 	@Column(nullable = false)
 	private String password;
 
@@ -47,16 +50,35 @@ public class User implements Serializable {
 
 	@Column(nullable = true, length = 20)
 	private String role;
+	private boolean isEnabled;
+	
+	@Column
+	private Date time;
+//	@Column(nullable = false)
+//	private boolean accepte;
+//
+//	public boolean isAccepte() {
+//		return accepte;
+//	}
+//
+//	public void setAccepte(boolean accepte) {
+//		this.accepte = accepte;
+//	}
 
-	@Column(nullable = false)
-	private boolean accepte = true;
-
-	public boolean isAccepte() {
-		return accepte;
+	public Date getTime() {
+		return time;
 	}
 
-	public void setAccepte(boolean accepte) {
-		this.accepte = accepte;
+	public void setTime(Date time) {
+		this.time = time;
+	}
+
+	public boolean isEnabled() {
+		return isEnabled;
+	}
+
+	public void setEnabled(boolean isEnabled) {
+		this.isEnabled = isEnabled;
 	}
 
 	public long getId() {
@@ -145,6 +167,14 @@ public class User implements Serializable {
 
 	public void setAddresse(String addresse) {
 		this.addresse = addresse;
+	}
+
+	public String getEmailId() {
+		return emailId;
+	}
+
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
 	}
 
 }
