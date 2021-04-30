@@ -29,31 +29,16 @@ public class Payment {
     @Column(name = "payment_total", nullable = false)
     private double total;
 
-    @ManyToOne(optional = false)
-    @NotNull
-    @JsonIgnoreProperties("payment_details")
-    private User user;
-
     public Payment() {
     }
 
-    public Payment(Long paymentId, OffsetTime paidAt, String orderRef, String paymentDetails, String paymentType, double total, User user) {
+    public Payment(Long paymentId, OffsetTime paidAt, String orderRef, String paymentDetails, String paymentType, double total) {
         this.paymentId = paymentId;
         this.paidAt = paidAt;
         this.orderRef = orderRef;
         this.paymentDetails = paymentDetails;
         this.paymentType = paymentType;
         this.total = total;
-        this.user = user;
-    }
-
-    public Payment(OffsetTime paidAt, String orderRef, String paymentDetails, String paymentType, double total, User user) {
-        this.paidAt = paidAt;
-        this.orderRef = orderRef;
-        this.paymentDetails = paymentDetails;
-        this.paymentType = paymentType;
-        this.total = total;
-        this.user = user;
     }
 
     public Long getPaymentId() {
@@ -104,11 +89,4 @@ public class Payment {
         this.total = total;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }
