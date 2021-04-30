@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import ma.youcode.shared.SpringApplicationContext;
 
 @SpringBootApplication
+@EnableEurekaClient
 public class BasmaOnlineStoreWithOutDtoApplication {
 
 	public static void main(String[] args) {
