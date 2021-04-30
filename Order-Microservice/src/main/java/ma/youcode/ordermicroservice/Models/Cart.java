@@ -1,29 +1,26 @@
 package ma.youcode.ordermicroservice.Models;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
-@Table(name = "Orders")
+@Table(name = "addToCart")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Orders {
+public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idOrder;
-    private int cartId;
-    private double cartItemTotal;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date orderDate;
-    private double cartTotal;
-    private String promoCode;
+     private Long cartId;
 
+    private int productId;
+    private int userId;
+    private Date addedDate;
+    private int qty;
 
 
 }
