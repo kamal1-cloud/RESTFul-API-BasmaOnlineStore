@@ -79,10 +79,7 @@
 			<artifactId>jackson-dataformat-xml</artifactId>
 		</dependency>
       <!--     Dependency for adding the microservice to service registry-->
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-		</dependency>
+
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>

@@ -1,36 +1,22 @@
 package ma.youcode.responses;
 
 import java.util.Date;
+import java.util.List;
+
+import ma.youcode.entities.Role;
 
 public class UserResponse {
 	private String userId;
 	private String firstName;
 	private String lastName;
 	private String email;
-//	private boolean accepte;
-//	private Date timeCreated;
-
-//	public Date getTimeCreated() {
-//		return timeCreated;
-//	}
-//
-//	public void setTimeCreated(Date timeCreated) {
-//		this.timeCreated = timeCreated;
-//	}
 
 	private String countact;
 
 	private String addresse;
 
 	private Date time;
-
-//	public boolean isAccepte() {
-//		return accepte;
-//	}
-//
-//	public void setAccepte(boolean accepte) {
-//		this.accepte = accepte;
-//	}
+	private List<Role> roles;
 
 	public Date getTime() {
 		return time;
@@ -40,7 +26,6 @@ public class UserResponse {
 		this.time = time;
 	}
 
-	private String role;
 
 	public String getUserId() {
 		return userId;
@@ -74,13 +59,7 @@ public class UserResponse {
 		this.email = email;
 	}
 
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
+	
 
 	public String getCountact() {
 		return countact;
@@ -97,5 +76,15 @@ public class UserResponse {
 	public void setAddresse(String addresse) {
 		this.addresse = addresse;
 	}
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+
+
 
 }

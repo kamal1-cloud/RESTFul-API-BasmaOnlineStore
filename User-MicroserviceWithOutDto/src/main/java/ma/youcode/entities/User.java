@@ -2,12 +2,18 @@ package ma.youcode.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity(name = "users")
@@ -48,22 +54,10 @@ public class User implements Serializable {
 	@Column(nullable = false)
 	private Boolean emailVerificationStatus = false;
 
-	@Column(nullable = true, length = 20)
-	private String role;
 	private boolean isEnabled;
-	
+
 	@Column
 	private Date time;
-//	@Column(nullable = false)
-//	private boolean accepte;
-//
-//	public boolean isAccepte() {
-//		return accepte;
-//	}
-//
-//	public void setAccepte(boolean accepte) {
-//		this.accepte = accepte;
-//	}
 
 	public Date getTime() {
 		return time;
@@ -105,6 +99,10 @@ public class User implements Serializable {
 		this.lastName = lastName;
 	}
 
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	private Set<Role> roles = new HashSet<>();
+
 	public String getEmail() {
 		return email;
 	}
@@ -145,14 +143,6 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
-
 	public String getCountact() {
 		return countact;
 	}
@@ -175,6 +165,44 @@ public class User implements Serializable {
 
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
+	}
+
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+
+	public User(String firstName, String lastName, String countact, String addresse, String email, String password,
+			Date time) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.countact = countact;
+		this.addresse = addresse;
+		this.email = email;
+		this.password = password;
+		this.time = time;
+	}
+	
+	public User(String firstName, String lastName, String countact, String addresse, String email, String password,
+			Date time, Set<Role> roles) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.countact = countact;
+		this.addresse = addresse;
+		this.email = email;
+		this.password = password;
+		this.time = time;
+		this.roles = roles;
+		
+	}
+
+	public User() {
+		super();
 	}
 
 }

@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -46,16 +45,7 @@ public class UserServicesImp implements UserService {
 
 	}
 
-	@Override
-	// Récupérer User vai son adresse Email
-	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		User userEntities = userRepository.findByEmail(email);
-		if (userEntities == null)
-			throw new UsernameNotFoundException(email);
 
-		return new org.springframework.security.core.userdetails.User(userEntities.getEmail(),
-				userEntities.getPassword(), new ArrayList<>());
-	}
 	
 	
 	

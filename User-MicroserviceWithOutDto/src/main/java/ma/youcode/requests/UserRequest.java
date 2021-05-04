@@ -1,6 +1,7 @@
 package ma.youcode.requests;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -33,9 +34,18 @@ public class UserRequest {
 	@NotNull(message = "Ce champ ne doit etre null !")
 	private String addresse;
 
-	@NotNull(message = "Ce champ ne doit etre null !")
-	@Size(min = 4, message = "Ce champ doit avoir au moins 3 Caracteres !")
-	private String role;
+	  private Set<String> role;
+	
+
+
+
+	public Set<String> getRole() {
+		return role;
+	}
+
+	public void setRole(Set<String> role) {
+		this.role = role;
+	}
 
 	private Date time;
 
@@ -89,14 +99,6 @@ public class UserRequest {
 		this.password = password;
 	}
 
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
-
 	public String getCountact() {
 		return countact;
 	}
@@ -112,17 +114,7 @@ public class UserRequest {
 	public void setAddresse(String addresse) {
 		this.addresse = addresse;
 	}
-//
-//	public Date getTimeCreated() {
-//		return timeCreated;
-//	}
-//
-//	public void setTimeCreated(Date timeCreated) {
-//		this.timeCreated = timeCreated;
-//	}
 
-//	public boolean isAccepte() {
-//		return accepte;
-//	}
+
 
 }

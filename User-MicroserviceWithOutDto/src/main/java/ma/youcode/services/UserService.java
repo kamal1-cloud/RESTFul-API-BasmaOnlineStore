@@ -2,13 +2,12 @@ package ma.youcode.services;
 
 import java.util.List;
 
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Repository;
 
 import ma.youcode.entities.User;
 
 @Repository
-public interface UserService extends UserDetailsService{
+public interface UserService{
 
 	User createUser(User user);
 
