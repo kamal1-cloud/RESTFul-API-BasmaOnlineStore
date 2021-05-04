@@ -11,6 +11,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -139,27 +140,22 @@ public class AuthController {
 		mailMessage.setSubject("Complete Registration!");
 		mailMessage.setFrom("chand312902@gmail.com");
 		mailMessage.setText("To confirm your account, please click here : "
-				+ "http://localhost:8080/users/confirm-account?token=" + confirmationToken.getConfirmationToken());
+				+ "http://localhost:8080/api/auth/confirm-account?token=" + confirmationToken.getConfirmationToken());
 		emailSenderService.sendEmail(mailMessage);
 		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
 	}
-	
-	
-	   @RequestMapping(value="/confirm-account", method= RequestMethod.GET)
-	    public String confirmUserAccount(@RequestParam("token")String confirmationToken)
-	    {
-	        ConfirmationToken token = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
 
-	        if(token != null)
-	        {
-	            User user = userRepository.findByEmail(token.getUser().getEmail());
-	            user.setEnabled(true);
-	            userRepository.save(user);
-	            return "slm";
-	        }
-	        else
-	        {
-	            return "not khf";
-	        }
-	    }
+	@RequestMapping(value = "/confirm-account", method = RequestMethod.GET)
+	public String confirmUserAccount(@RequestParam("token") String confirmationToken) {
+		ConfirmationToken token = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
+
+		if (token != null) {
+			User user = userRepository.findByEmail(token.getUser().getEmail());
+			user.setEnabled(true);
+			userRepository.save(user);
+			return "slm";
+		} else {
+			return "not khf";
+		}
+	}
 }
