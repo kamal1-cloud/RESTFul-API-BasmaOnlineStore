@@ -153,9 +153,9 @@ public class AuthController {
 			User user = userRepository.findByEmail(token.getUser().getEmail());
 			user.setEnabled(true);
 			userRepository.save(user);
-			return "slm";
+			return "Congratulation Your Account Is Activated";
 		} else {
-			return "not khf";
+			return "Sorry Your Account Does Not Activate";
 		}
 	}
 }
