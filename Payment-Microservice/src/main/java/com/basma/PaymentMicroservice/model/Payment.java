@@ -1,9 +1,7 @@
 package com.basma.PaymentMicroservice.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.time.OffsetTime;
 
 @Entity
@@ -29,31 +27,28 @@ public class Payment {
     @Column(name = "payment_total", nullable = false)
     private double total;
 
-    @ManyToOne(optional = false)
-    @NotNull
-    @JsonIgnoreProperties("payment_details")
-    private User user;
+    @Column(name = "user_id", nullable = false)
+    private Long userId;
 
     public Payment() {
     }
 
-    public Payment(Long paymentId, OffsetTime paidAt, String orderRef, String paymentDetails, String paymentType, double total, User user) {
+    public Payment(Long paymentId, OffsetTime paidAt, String orderRef, String paymentDetails, String paymentType, double total) {
         this.paymentId = paymentId;
         this.paidAt = paidAt;
         this.orderRef = orderRef;
         this.paymentDetails = paymentDetails;
         this.paymentType = paymentType;
         this.total = total;
-        this.user = user;
     }
 
-    public Payment(OffsetTime paidAt, String orderRef, String paymentDetails, String paymentType, double total, User user) {
+    public Payment(OffsetTime paidAt, String orderRef, String paymentDetails, String paymentType, double total, Long userId) {
         this.paidAt = paidAt;
         this.orderRef = orderRef;
         this.paymentDetails = paymentDetails;
         this.paymentType = paymentType;
         this.total = total;
-        this.user = user;
+        this.userId = userId;
     }
 
     public Long getPaymentId() {
@@ -104,11 +99,12 @@ public class Payment {
         this.total = total;
     }
 
-    public User getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
+
 }
