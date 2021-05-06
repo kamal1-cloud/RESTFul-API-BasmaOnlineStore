@@ -1,7 +1,10 @@
 package ma.youcode.ordermicroservice.Web;
 
+import lombok.extern.slf4j.Slf4j;
 import ma.youcode.ordermicroservice.Models.Orders;
 import ma.youcode.ordermicroservice.Services.OrdersService;
+import ma.youcode.ordermicroservice.VO.ResponceTemplateVOrder;
+import ma.youcode.ordermicroservice.VO.ResponseTemplateVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +14,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
+@Slf4j
 @RequestMapping("/order")
 public class OrderController {
     @Autowired
@@ -28,16 +32,16 @@ public class OrderController {
     }
 
 //    Find Order by id
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Orders> get(@PathVariable Long id) {
-        try {
-            Orders order = ordersService.getOrderByid(id);
-            return new ResponseEntity<>(order, HttpStatus.OK);
-        } catch (NoSuchElementException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
+//
+//    @GetMapping("/{id}")
+//    public ResponseEntity<Orders> get(@PathVariable Long id) {
+//        try {
+//            Orders order = ordersService.getOrderByid(id);
+//            return new ResponseEntity<>(order, HttpStatus.OK);
+//        } catch (NoSuchElementException e) {
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//    }
 
     // Update Order record
     @PutMapping("/{id}")
@@ -61,6 +65,12 @@ public class OrderController {
             System.out.println(ex.getMessage());
             return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
         }
+    }
+
+    @GetMapping("/{id}")
+    public ResponceTemplateVOrder getOrderWithCart(@PathVariable("id") Long orderId){
+        log.info("getProductWithCatgory of CartController");
+        return ordersService.getOrderWithCart(orderId);
     }
 
 }

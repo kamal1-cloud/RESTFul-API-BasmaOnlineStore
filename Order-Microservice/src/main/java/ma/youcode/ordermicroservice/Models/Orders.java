@@ -21,7 +21,6 @@ public class Orders {
     private double cartItemTotal;
     @Temporal(TemporalType.TIMESTAMP)
     private Date orderDate;
-    private double cartTotal;
     private String promoCode;
 
 

@@ -11,7 +11,6 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -47,7 +46,7 @@ import ma.youcode.security.services.UserDetailsImpl;
 public class AuthController {
 	@Autowired
 	AuthenticationManager authenticationManager;
-
+	
 	@Autowired
 	UserRepository userRepository;
 	@Autowired
@@ -80,6 +79,8 @@ public class AuthController {
 
 		return ResponseEntity.ok(
 				new JwtResponse(jwt, userDetails.getId(), userDetails.getUsername(), userDetails.getEmail(), roles));
+	
+		
 	}
 
 	@PostMapping("/signup")
@@ -134,7 +135,7 @@ public class AuthController {
 		mailMessage.setSubject("Complete Registration!");
 		mailMessage.setFrom("chand312902@gmail.com");
 		mailMessage.setText("To confirm your account, please click here : "
-				+ "http://localhost:8080/api/auth/confirm-account?token=" + confirmationToken.getConfirmationToken());
+				+ "http://localhost:8088/api/auth/confirm-account?token=" + confirmationToken.getConfirmationToken());
 		emailSenderService.sendEmail(mailMessage);
 		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
 	}

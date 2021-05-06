@@ -19,11 +19,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(	name = "users", 
-		uniqueConstraints = { 
-			@UniqueConstraint(columnNames = "username"),
-			@UniqueConstraint(columnNames = "email") 
-		})
+@Table(name = "users", uniqueConstraints = { @UniqueConstraint(columnNames = "username"),
+		@UniqueConstraint(columnNames = "email") })
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,18 +34,28 @@ public class User {
 	@Size(max = 50)
 	@Email
 	private String email;
-	
+
 	@NotBlank
 	@Size(max = 120)
 	private String password;
-	
+
+	private long idOrder;
+
+	public long getIdOrder() {
+		return idOrder;
+	}
+
+	public void setIdOrder(long idOrder) {
+		this.idOrder = idOrder;
+	}
+
 	private String userId;
 	private String adresse;
-	
+
 	private boolean isEnabled;
 
 	private Date time;
-	
+
 	private String contact;
 
 	public String getContact() {
@@ -68,9 +75,7 @@ public class User {
 	}
 
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(	name = "user_roles", 
-				joinColumns = @JoinColumn(name = "user_id"), 
-				inverseJoinColumns = @JoinColumn(name = "role_id"))
+	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
 
 	public User() {
