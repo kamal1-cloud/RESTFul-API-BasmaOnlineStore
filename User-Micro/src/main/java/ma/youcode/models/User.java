@@ -39,15 +39,15 @@ public class User {
 	@Size(max = 120)
 	private String password;
 
-	private long idOrder;
-
-	public long getIdOrder() {
-		return idOrder;
-	}
-
-	public void setIdOrder(long idOrder) {
-		this.idOrder = idOrder;
-	}
+//	private long idOrder;
+//
+//	public long getIdOrder() {
+//		return idOrder;
+//	}
+//
+//	public void setIdOrder(long idOrder) {
+//		this.idOrder = idOrder;
+//	}
 
 	private String userId;
 	private String adresse;
