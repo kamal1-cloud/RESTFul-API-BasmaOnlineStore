@@ -20,7 +20,6 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
      private Long cartId;
     private int productId;
-    private int userId;
     @Column(insertable=false)
     private Date addedDate;
     private int qty;

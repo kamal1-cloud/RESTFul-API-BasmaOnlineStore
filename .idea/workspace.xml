@@ -3,21 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="212f1f01-7953-49a2-b420-f502e29786dc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Order-Microservice/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Order-Microservice/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Order-Microservice/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Order-Microservice/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Order-Microservice/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Order-Microservice/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Order-Microservice/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Order-Microservice/src/main/java/ma/youcode/shoppingcart/ShoppingCartApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Order-Microservice/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Order-Microservice/src/test/java/ma/youcode/shoppingcart/ShoppingCartApplicationTests.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Product-Microservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Product-Microservice/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Product-Microservice/src/main/java/ma/youcode/store/Controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Product-Microservice/src/main/java/ma/youcode/store/Controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Product-Microservice/src/main/java/ma/youcode/store/Exceptions/GlobalExceptionHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Product-Microservice/src/main/java/ma/youcode/store/ProductMicroserviceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Product-Microservice/src/main/java/ma/youcode/store/ProductMicroserviceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Product-Microservice/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Product-Microservice/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service-registry/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Service-registry/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,11 +24,24 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Restfull project/BasmaStore" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -57,6 +57,7 @@
       <workItem from="1619497802141" duration="477000" />
       <workItem from="1619517451472" duration="5864000" />
       <workItem from="1619578641915" duration="1731000" />
+      <workItem from="1620296611638" duration="1500000" />
     </task>
     <servers />
   </component>
