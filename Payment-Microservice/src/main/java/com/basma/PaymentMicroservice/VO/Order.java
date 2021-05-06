@@ -17,5 +17,5 @@ public class Order {
     private double cartItemTotal;
     private Date orderDate;
     private String promoCode;
-    
+
 }
