@@ -18,6 +18,7 @@ public class Orders {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idOrder;
     private int cartId;
+    private int userId;
     private double cartItemTotal;
     @Temporal(TemporalType.TIMESTAMP)
     private Date orderDate;
