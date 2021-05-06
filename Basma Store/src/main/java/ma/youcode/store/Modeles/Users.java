@@ -11,7 +11,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Users")
-@JsonIgnoreProperties(value = {"password", "idUser"})
+//@JsonIgnoreProperties(value = {"password", "idUser"})
 public class Users {
 
     @Id

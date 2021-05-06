@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "addToCart")
@@ -16,9 +19,9 @@ public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
      private Long cartId;
-
     private int productId;
     private int userId;
+    @Column(insertable=false)
     private Date addedDate;
     private int qty;
 

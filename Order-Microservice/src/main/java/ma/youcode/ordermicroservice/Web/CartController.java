@@ -1,9 +1,10 @@
 package ma.youcode.ordermicroservice.Web;
 
-import ma.youcode.ordermicroservice.Beans.ProductBean;
+
+import lombok.extern.slf4j.Slf4j;
 import ma.youcode.ordermicroservice.Models.Cart;
-import ma.youcode.ordermicroservice.Models.Orders;
 import ma.youcode.ordermicroservice.Services.CartService;
+import ma.youcode.ordermicroservice.VO.ResponseTemplateVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,49 +15,44 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
+@RequestMapping("/cart")
+@Slf4j
 public class CartController {
 
     @Autowired
-    RestTemplate restTemplate;
-    @Autowired
     CartService cartService;
-    private String BASE_URI = "http://localhost:8082/microservice-produits";
-//
-//    @GetMapping("/add-one-to-cart/{productId}")
-//    public ProductBean addOneToCart(@RequestParam("productId") Long productId,
-//                                    @RequestParam("quantity") Integer quantity){
-////        String url = BASE_URI+"/"
-//    }
+
     @GetMapping
     public List<Cart> listOrders(){
         return cartService.listAll();
     }
+
         // Insert Order record
         @PostMapping
         @ResponseStatus(HttpStatus.CREATED)
         public Cart AddToCart(@RequestBody Cart cart) {
 
-            return cartService.save(cart);
+            return cartService.AddToCart(cart);
         }
 
-//    Find Order by id
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Cart> get(@PathVariable Long id) {
-        try {
-            Cart cart = cartService.getById(id);
-            return new ResponseEntity<>(cart, HttpStatus.OK);
-        } catch (NoSuchElementException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
+////    Find Order by id
+//
+//    @GetMapping("/{id}")
+//    public ResponseEntity<Cart> get(@PathVariable Long id) {
+//        try {
+//            Cart cart = cartService.getById(id);
+//            return new ResponseEntity<>(cart, HttpStatus.OK);
+//        } catch (NoSuchElementException e) {
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//    }
 
     // Update Order record
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@RequestBody Cart cart, @PathVariable Long id) {
         try {
             Cart existCart = cartService.getById(id);
-            cartService.save(cart);
+            cartService.AddToCart(cart);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -73,5 +69,11 @@ public class CartController {
             System.out.println(ex.getMessage());
             return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
         }
+    }
+
+    @GetMapping("/{id}")
+    public ResponseTemplateVO getProductWithCatgory (@PathVariable("id") Long cartId){
+        log.info("getProductWithCatgory of CartController");
+        return cartService.getCartWithProduct(cartId);
     }
 }

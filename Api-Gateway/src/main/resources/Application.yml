@@ -11,37 +11,37 @@ spring:
           uri: lb://MICROSERVICE-PRODUITS
           predicates:
             - Path=/product/**
-          filters:
-            - name: CircuitBreaker
-              args:
-                  name: MICROSERVICE-PRODUITS
-                  fallbackuri: forward:/productServiceFallBack
+#          filters:
+#            - name: CircuitBreaker
+#              args:
+#                  name: MICROSERVICE-PRODUITS
+#                  fallbackuri: forward:/productServiceFallBack
 
         - id: MICROSERVICE-CATEGORY
           uri: lb://MICROSERVICE-CATEGORY
           predicates:
             - Path=/category/**
-          filters:
-            - name: CircuitBreaker
-              args:
-                name: MICROSERVICE-CATEGORY
-                fallbackuri: forward:/categoryServiceFallBack
+#          filters:
+#            - name: CircuitBreaker
+#              args:
+#                name: MICROSERVICE-CATEGORY
+#                fallbackuri: forward:/categoryServiceFallBack
 
 # If i didnt receive the response from the our services in 4 sec then my request will be forword it to the fallbacks methods
-  hystrix:
-    command:
-      fallbackcmd:
-        execution:
-          isolation:
-            thread:
-              timeoutInMilliseconds: 4000 # 4 sec
+#  hystrix:
+#    command:
+#      fallbackcmd:
+#        execution:
+#          isolation:
+#            thread:
+#              timeoutInMilliseconds: 4000 # 4 sec
 
 
-    management:
-      endpoints:
-        web:
-          exposure:
-            include: hystrix.stream
+#    management:
+#      endpoints:
+#        web:
+#          exposure:
+#            include: hystrix.stream
 
 
 
