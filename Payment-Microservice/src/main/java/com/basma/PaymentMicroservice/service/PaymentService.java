@@ -27,7 +27,12 @@ public class PaymentService {
         ResponseTemplateVO vo = new ResponseTemplateVO();
         Payment payment = paymentRepository.findByPaymentId(paymentId);
 
-        Order order = restTemplate.getForObject("", Order.class);
+        Order order = restTemplate.getForObject("localhost:8081/order/" + payment.getPaymentId(), Order.class);
+
+        vo.setPayment(payment);
+        vo.setOrder(order);
+
+        return vo;
     }
 
     public List<Payment> listAll(){

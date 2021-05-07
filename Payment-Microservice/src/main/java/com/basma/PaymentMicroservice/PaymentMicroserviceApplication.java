@@ -13,7 +13,7 @@ public class PaymentMicroserviceApplication {
 	}
 
 	@Bean
-	private RestTemplate restTemplate(){
+	public RestTemplate restTemplate(){
 		return new RestTemplate();
 	}
 

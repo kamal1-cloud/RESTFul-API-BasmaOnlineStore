@@ -79,7 +79,7 @@ public class PaymentController {
     @GetMapping("/order/{paymentId}")
     public ResponseTemplateVO getPaymentWithOrder(@PathVariable("paymentId") Long paymentId){
         log.info("REST request to get order payment : {}", paymentId);
-        return PaymentService.getPaymentWithOrder(paymentId);
+        return paymentService.getPaymentWithOrder(paymentId);
     }
 
 }
