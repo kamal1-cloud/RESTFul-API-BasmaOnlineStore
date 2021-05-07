@@ -5,7 +5,6 @@
 //import org.springframework.web.client.RestTemplate;
 //
 //import lombok.extern.slf4j.Slf4j;
-//import ma.youcode.VO.Order;
 //import ma.youcode.VO.ResponseTemplateVO;
 //import ma.youcode.models.User;
 //import ma.youcode.repository.UserRepository;

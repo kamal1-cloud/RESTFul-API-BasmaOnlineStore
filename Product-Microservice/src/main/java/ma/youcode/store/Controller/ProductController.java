@@ -1,8 +1,10 @@
 package ma.youcode.store.Controller;
 
 
+import lombok.extern.slf4j.Slf4j;
 import ma.youcode.store.Model.Products;
 import ma.youcode.store.Services.ProductServices;
+import ma.youcode.store.VO.ResponseTemplateVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/product")
+@Slf4j
 public class ProductController {
     @Autowired
     ProductServices productServices;
@@ -34,15 +37,15 @@ public class ProductController {
 
 //    Find Product by id
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Products> get(@PathVariable Long id) {
-        try {
-            Products product = productServices.getById(id);
-            return new ResponseEntity<>(product, HttpStatus.OK);
-        } catch (NoSuchElementException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
+//    @GetMapping("/{id}")
+//    public ResponseEntity<Products> get(@PathVariable Long id) {
+//        try {
+//            Products product = productServices.getById(id);
+//            return new ResponseEntity<>(product, HttpStatus.OK);
+//        } catch (NoSuchElementException e) {
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//    }
 
     // Update Product record
     @PutMapping("/{id}")
@@ -67,5 +70,13 @@ public class ProductController {
             return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
         }
     }
+
+    //    Find Product by id and category
+
+    @GetMapping("/{id}")
+   public ResponseTemplateVO getProductWithCatgory (@PathVariable("id") Long productId){
+//        log.info("Inside getProductWithCatgory of ProductController");
+        return productServices.getProductWithCatgory(productId);
+   }
 
 }

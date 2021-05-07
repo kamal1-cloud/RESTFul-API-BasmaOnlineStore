@@ -35,6 +35,8 @@ public class Products {
     @Column(nullable = false)
     private boolean status;
 
+    private int CategoryId;
+
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "productId", referencedColumnName = "idProduct")
     List<Images> images = new ArrayList<>();

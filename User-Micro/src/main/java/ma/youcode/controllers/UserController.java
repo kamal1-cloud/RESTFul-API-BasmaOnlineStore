@@ -103,7 +103,7 @@ public class UserController {
 	
 	
 	
-	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+	//@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
 	@GetMapping(path = "/{id}", produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<UserResponse> getUser(@PathVariable String id) {
 		User userEntity = userService.getUserByUserId(id);
