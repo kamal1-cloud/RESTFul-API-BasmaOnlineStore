@@ -73,7 +73,7 @@ public class CartController {
 
     @GetMapping("/{id}")
     public ResponseTemplateVO getProductWithCatgory (@PathVariable("id") Long cartId){
-        log.info("getProductWithCatgory of CartController");
+//        log.info("getProductWithCatgory of CartController");
         return cartService.getCartWithProduct(cartId);
     }
 }

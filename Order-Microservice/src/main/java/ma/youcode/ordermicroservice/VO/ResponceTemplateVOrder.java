@@ -10,6 +10,23 @@ import ma.youcode.ordermicroservice.Models.Orders;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ResponceTemplateVOrder {
-    private Cart cart;
-    private Orders order;
+	private Cart cart;
+	private Orders order;
+
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+
+	public Orders getOrder() {
+		return order;
+	}
+
+	public void setOrder(Orders order) {
+		this.order = order;
+	}
+
 }

@@ -9,7 +9,23 @@ import ma.youcode.ordermicroservice.Models.Cart;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ResponseTemplateVO {
-    private Cart cart;
-    private Product product;
+	private Cart cart;
+	private Product product;
+
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
 
 }
