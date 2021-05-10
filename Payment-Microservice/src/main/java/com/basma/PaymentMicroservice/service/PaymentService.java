@@ -4,7 +4,8 @@ import com.basma.PaymentMicroservice.model.Payment;
 import com.basma.PaymentMicroservice.repository.PaymentRepository;
 import org.springframework.stereotype.Service;
 
-
+import java.util.Random;
+import java.util.UUID;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,6 +24,8 @@ public class PaymentService {
     }
 
     public Payment save(Payment payment){
+        payment.setPaymentStatus(paymentProcessing());
+        payment.setTransactionId(UUID.randomUUID().toString());
         return paymentRepository.save(payment);
     }
 
@@ -32,6 +35,10 @@ public class PaymentService {
 
     public void delete(Long paymentId){
         paymentRepository.deleteById(paymentId);
+    }
+
+    public String paymentProcessing(){
+        return new Random().nextBoolean()?"success":"failure";
     }
 
 }
