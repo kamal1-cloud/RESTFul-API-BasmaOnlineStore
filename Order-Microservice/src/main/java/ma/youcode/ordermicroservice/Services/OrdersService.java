@@ -4,9 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import ma.youcode.ordermicroservice.Models.Cart;
 import ma.youcode.ordermicroservice.Models.Orders;
 import ma.youcode.ordermicroservice.Repositories.OrderRepository;
-import ma.youcode.ordermicroservice.VO.Product;
-import ma.youcode.ordermicroservice.VO.ResponceTemplateVOrder;
-import ma.youcode.ordermicroservice.VO.ResponseTemplateVO;
+import ma.youcode.ordermicroservice.VO.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -24,9 +22,16 @@ public class OrdersService {
    public List<Orders> listOrders(){
   return orderRepository.findAll();
    }
-   public Orders saveOrder(Orders order){
-     orderRepository.save(order);
-     return order;
+   public TransactionResponse saveOrder(TransactionRequest request){
+       String response="";
+       Orders order=request.getOrder();
+       Payment payment=request.getPayment();
+       payment.setOrderId((int) order.getIdOrder());
+       payment.setAmount((int) order.getCartItemTotal());
+       Payment paymentResponse = restTemplate.postForObject("http://localhost:8082/payment/newPayment", payment, Payment.class);
+       response = paymentResponse.getPaymentStatus().equals("success")?"payment processing successful and order placed":"there is a failure in payment, order added to cart";
+       orderRepository.save(order);
+        return new TransactionResponse(order, paymentResponse.getAmount(), paymentResponse.getTransactionId(), response);
    }
    public Orders getOrderByid(Long id){
    return orderRepository.findById(id).get();

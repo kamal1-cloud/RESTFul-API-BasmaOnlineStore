@@ -3,8 +3,7 @@ package ma.youcode.ordermicroservice.Web;
 import lombok.extern.slf4j.Slf4j;
 import ma.youcode.ordermicroservice.Models.Orders;
 import ma.youcode.ordermicroservice.Services.OrdersService;
-import ma.youcode.ordermicroservice.VO.ResponceTemplateVOrder;
-import ma.youcode.ordermicroservice.VO.ResponseTemplateVO;
+import ma.youcode.ordermicroservice.VO.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,9 +25,9 @@ public class OrderController {
     // Insert Order record
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Orders newProduct(@RequestBody Orders order) {
+    public TransactionResponse newProduct(@RequestBody TransactionRequest request) {
 
-        return ordersService.saveOrder(order);
+        return ordersService.saveOrder(request);
     }
 
 //    Find Order by id
@@ -45,10 +44,10 @@ public class OrderController {
 
     // Update Order record
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@RequestBody Orders order, @PathVariable Long id) {
+    public ResponseEntity<?> update(@RequestBody TransactionRequest request, @PathVariable Long id) {
         try {
             Orders existOrders = ordersService.getOrderByid(id);
-            ordersService.saveOrder(order);
+            ordersService.saveOrder(request);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
