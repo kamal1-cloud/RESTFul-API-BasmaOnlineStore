@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Api-Gateway/Api-Gateway.iml" filepath="$PROJECT_DIR$/../Api-Gateway/Api-Gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../User-MicroserviceWithOutDto/BasmaOnlineStoreWithOutDto.iml" filepath="$PROJECT_DIR$/../User-MicroserviceWithOutDto/BasmaOnlineStoreWithOutDto.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Hystrix-Dashboard/Hystrix-Dashboard.iml" filepath="$PROJECT_DIR$/../Hystrix-Dashboard/Hystrix-Dashboard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Payment-Microservice/Payment-Microservice.iml" filepath="$PROJECT_DIR$/../Payment-Microservice/Payment-Microservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Product-Microservice/Product-Microservice.iml" filepath="$PROJECT_DIR$/../Product-Microservice/Product-Microservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Service-registry/Service-registry.iml" filepath="$PROJECT_DIR$/../Service-registry/Service-registry.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Category-Microservice/com.basmaonline.iml" filepath="$PROJECT_DIR$/../Category-Microservice/com.basmaonline.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../order-Microservice/order-Microservice.iml" filepath="$PROJECT_DIR$/../order-Microservice/order-Microservice.iml" />
+    </modules>
+  </component>
+</project>

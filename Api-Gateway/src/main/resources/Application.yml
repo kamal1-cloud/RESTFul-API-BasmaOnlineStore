@@ -26,6 +26,11 @@ spring:
 #              args:
 #                name: MICROSERVICE-CATEGORY
 #                fallbackuri: forward:/categoryServiceFallBack
+        - id: MICROSERVICE-COMMANDE
+          uri: lb://MICROSERVICE-COMMANDE
+          predicates:
+            - Path=/cart/**
+            - Path=/order/**
 
 # If i didnt receive the response from the our services in 4 sec then my request will be forword it to the fallbacks methods
 #  hystrix:

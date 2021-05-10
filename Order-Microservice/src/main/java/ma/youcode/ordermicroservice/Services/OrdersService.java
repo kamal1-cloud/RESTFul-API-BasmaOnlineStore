@@ -4,9 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import ma.youcode.ordermicroservice.Models.Cart;
 import ma.youcode.ordermicroservice.Models.Orders;
 import ma.youcode.ordermicroservice.Repositories.OrderRepository;
-import ma.youcode.ordermicroservice.VO.Product;
 import ma.youcode.ordermicroservice.VO.ResponceTemplateVOrder;
-import ma.youcode.ordermicroservice.VO.ResponseTemplateVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -16,9 +14,9 @@ import java.util.List;
 @Service
 @Slf4j
 public class OrdersService {
-  @Autowired
-  OrderRepository orderRepository;
     @Autowired
+    OrderRepository orderRepository;
+     @Autowired
     private RestTemplate restTemplate;
 
    public List<Orders> listOrders(){

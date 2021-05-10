@@ -8,7 +8,7 @@ import ma.youcode.ordermicroservice.Models.Cart;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ResponseTemplateVO {
+public class ResponseTemplateVOCart {
     private Cart cart;
     private Product product;
 

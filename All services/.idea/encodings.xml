@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/../Api-Gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Api-Gateway/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Category-Microservice/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Category-Microservice/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Hystrix-Dashboard/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Hystrix-Dashboard/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Payment-Microservice/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Payment-Microservice/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Product-Microservice/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Product-Microservice/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Service-registry/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../Service-registry/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../User-MicroserviceWithOutDto/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../User-MicroserviceWithOutDto/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../order-Microservice/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../order-Microservice/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

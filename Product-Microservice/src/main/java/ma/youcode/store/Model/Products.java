@@ -18,7 +18,7 @@ import java.util.List;
 public class Products {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long idProduct;
+    private Long productId;
 
     @Column
     private String name;
@@ -38,7 +38,7 @@ public class Products {
     private int CategoryId;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "productId", referencedColumnName = "idProduct")
+    @JoinColumn(name = "productId", referencedColumnName = "productId")
     List<Images> images = new ArrayList<>();
 
 

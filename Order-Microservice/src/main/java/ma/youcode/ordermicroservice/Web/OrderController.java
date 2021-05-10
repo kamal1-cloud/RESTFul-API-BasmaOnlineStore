@@ -4,7 +4,6 @@ import lombok.extern.slf4j.Slf4j;
 import ma.youcode.ordermicroservice.Models.Orders;
 import ma.youcode.ordermicroservice.Services.OrdersService;
 import ma.youcode.ordermicroservice.VO.ResponceTemplateVOrder;
-import ma.youcode.ordermicroservice.VO.ResponseTemplateVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

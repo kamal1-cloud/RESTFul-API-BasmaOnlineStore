@@ -4,12 +4,11 @@ package ma.youcode.ordermicroservice.Web;
 import lombok.extern.slf4j.Slf4j;
 import ma.youcode.ordermicroservice.Models.Cart;
 import ma.youcode.ordermicroservice.Services.CartService;
-import ma.youcode.ordermicroservice.VO.ResponseTemplateVO;
+import ma.youcode.ordermicroservice.VO.ResponseTemplateVOCart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -72,8 +71,8 @@ public class CartController {
     }
 
     @GetMapping("/{id}")
-    public ResponseTemplateVO getProductWithCatgory (@PathVariable("id") Long cartId){
-        log.info("getProductWithCatgory of CartController");
+    public ResponseTemplateVOCart getCartWithProduct (@PathVariable("id") Long cartId){
+        log.info("getCartWithProduct of CartController");
         return cartService.getCartWithProduct(cartId);
     }
 }

@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import ma.youcode.ordermicroservice.Models.Cart;
 import ma.youcode.ordermicroservice.Repositories.CartRepository;
 import ma.youcode.ordermicroservice.VO.Product;
-import ma.youcode.ordermicroservice.VO.ResponseTemplateVO;
+import ma.youcode.ordermicroservice.VO.ResponseTemplateVOCart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -38,9 +38,9 @@ public class CartService {
 
 
 
-    public ResponseTemplateVO getCartWithProduct(Long cartId) {
+    public ResponseTemplateVOCart getCartWithProduct(Long cartId) {
         log.info("Inside getCartWithProduct of ProductService");
-        ResponseTemplateVO voc = new ResponseTemplateVO();
+        ResponseTemplateVOCart voc = new ResponseTemplateVOCart();
         Cart cart = cartRepository.findById(cartId).get();
         Product product =
                 restTemplate.getForObject("http://MICROSERVICE-PRODUITS/product/" + cart.getProductId(),
