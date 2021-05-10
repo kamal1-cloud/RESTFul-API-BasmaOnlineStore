@@ -1,12 +1,10 @@
 package com.basma.PaymentMicroservice.service;
 
-import com.basma.PaymentMicroservice.VO.Order;
-import com.basma.PaymentMicroservice.VO.ResponseTemplateVO;
 import com.basma.PaymentMicroservice.model.Payment;
 import com.basma.PaymentMicroservice.repository.PaymentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
+
+
 
 import java.util.List;
 import java.util.Optional;
@@ -14,25 +12,10 @@ import java.util.Optional;
 @Service
 public class PaymentService {
 
-    @Autowired
-    private RestTemplate restTemplate;
-
     PaymentRepository paymentRepository;
 
     public PaymentService(PaymentRepository paymentRepository) {
         this.paymentRepository = paymentRepository;
-    }
-
-    public ResponseTemplateVO getPaymentWithOrder(Long paymentId) {
-        ResponseTemplateVO vo = new ResponseTemplateVO();
-        Payment payment = paymentRepository.findByPaymentId(paymentId);
-
-        Order order = restTemplate.getForObject("http://localhost:8081/order/" + payment.getPaymentId(), Order.class);
-
-        vo.setPayment(payment);
-        vo.setOrder(order);
-
-        return vo;
     }
 
     public List<Payment> listAll(){
@@ -40,8 +23,7 @@ public class PaymentService {
     }
 
     public Payment save(Payment payment){
-        paymentRepository.save(payment);
-        return payment;
+        return paymentRepository.save(payment);
     }
 
     public Optional<Payment> getById(Long paymentId){
@@ -51,4 +33,5 @@ public class PaymentService {
     public void delete(Long paymentId){
         paymentRepository.deleteById(paymentId);
     }
+
 }

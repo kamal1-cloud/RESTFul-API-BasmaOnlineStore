@@ -1,6 +1,5 @@
 package com.basma.PaymentMicroservice.controller;
 
-import com.basma.PaymentMicroservice.VO.ResponseTemplateVO;
 import com.basma.PaymentMicroservice.exceptions.PaymentNotAddedException;
 import com.basma.PaymentMicroservice.exceptions.PaymentNotFoundException;
 import com.basma.PaymentMicroservice.model.Payment;
@@ -75,11 +74,4 @@ public class PaymentController {
         paymentService.delete(paymentId);
         return ResponseEntity.noContent().build();
     }
-
-    @GetMapping("/order/{paymentId}")
-    public ResponseTemplateVO getPaymentWithOrder(@PathVariable("paymentId") Long paymentId){
-        log.info("REST request to get order payment : {}", paymentId);
-        return paymentService.getPaymentWithOrder(paymentId);
-    }
-
 }
