@@ -6,12 +6,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 @Entity
-@Table(name = "addToCart")
+@Table(name = "cart")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
