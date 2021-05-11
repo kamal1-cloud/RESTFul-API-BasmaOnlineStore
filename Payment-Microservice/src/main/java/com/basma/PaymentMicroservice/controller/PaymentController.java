@@ -59,10 +59,10 @@ public class PaymentController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @GetMapping("/{paymentId}")
-    public ResponseEntity<Payment> getCategory(@PathVariable("paymentId") Long paymentId){
-        log.debug("REST request to get payment : {}", paymentId);
-        Optional<Payment> payment = paymentService.getById(paymentId);
+    @GetMapping("/{orderId}")
+    public ResponseEntity<Payment> findPaymentHistoryByOrderId(@PathVariable("orderId") int orderId){
+        log.debug("REST request to get payment history by payment ID : {}", orderId);
+        Optional<Payment> payment = paymentService.findPaymentHistoryByOrderId(orderId);
 
         return ResponseUtil.wrapOrNotFound(payment);
     }
