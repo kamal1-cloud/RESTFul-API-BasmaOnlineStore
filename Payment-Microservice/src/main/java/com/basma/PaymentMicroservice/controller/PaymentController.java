@@ -37,7 +37,7 @@ public class PaymentController {
     }
 
     @PostMapping("/newPayment")
-    public ResponseEntity<Payment> createNewCategory(@RequestBody Payment payment) throws PaymentNotAddedException {
+    public ResponseEntity<Payment> createNewPayment(@RequestBody Payment payment) throws PaymentNotAddedException {
         log.debug("REST request to save payment: {}", payment);
         if(payment.getPaymentId() != null) {
             throw new PaymentNotAddedException("A new payment cannot be added ID " + ENTITY_NAME + " id already exists");
@@ -49,7 +49,7 @@ public class PaymentController {
     }
 
     @PutMapping("/editPayment")
-    public ResponseEntity<Payment> updateCategory(@RequestBody Payment payment) throws PaymentNotFoundException {
+    public ResponseEntity<Payment> updatePayment(@RequestBody Payment payment) throws PaymentNotFoundException {
         log.debug("REST request to update payment : {}", payment);
         if(payment.getPaymentId() == null) {
             throw new PaymentNotFoundException("Invalid id " + ENTITY_NAME + " or idnull");
@@ -69,7 +69,7 @@ public class PaymentController {
 
     @DeleteMapping("/{paymentId}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Void> deleteCategory(@PathVariable("paymentId") Long paymentId) {
+    public ResponseEntity<Void> deletePayment(@PathVariable("paymentId") Long paymentId) {
         log.debug("REST request to delete payment : {}", paymentId);
         paymentService.delete(paymentId);
         return ResponseEntity.noContent().build();
