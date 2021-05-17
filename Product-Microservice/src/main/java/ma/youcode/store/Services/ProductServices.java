@@ -33,7 +33,7 @@ public class ProductServices {
     }
 
     public ResponseTemplateVO getProductWithCatgory(Long productId) {
-//        log.info("Inside getProductWithCatgory of ProductService");
+        log.info("Inside getProductWithCatgory of ProductService");
         ResponseTemplateVO vo = new ResponseTemplateVO();
         Products product = productRepository.findById(productId).get();
         Category category =

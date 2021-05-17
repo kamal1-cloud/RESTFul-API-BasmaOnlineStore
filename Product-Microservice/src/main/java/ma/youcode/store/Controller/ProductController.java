@@ -75,7 +75,7 @@ public class ProductController {
 
     @GetMapping("/{id}")
    public ResponseTemplateVO getProductWithCatgory (@PathVariable("id") Long productId){
-//        log.info("Inside getProductWithCatgory of ProductController");
+        log.info("Inside getProductWithCatgory of ProductController");
         return productServices.getProductWithCatgory(productId);
    }
 
