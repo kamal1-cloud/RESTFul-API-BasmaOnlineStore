@@ -11,4 +11,17 @@ import ma.youcode.store.Model.Products;
 public class ResponseTemplateVO {
     private Products products;
     private Category category;
+	public Products getProducts() {
+		return products;
+	}
+	public void setProducts(Products products) {
+		this.products = products;
+	}
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+    
 }

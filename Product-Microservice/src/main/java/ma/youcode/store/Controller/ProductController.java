@@ -1,6 +1,5 @@
 package ma.youcode.store.Controller;
 
-
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -26,22 +25,22 @@ import ma.youcode.store.VO.ResponseTemplateVO;
 @RequestMapping("/product")
 @Slf4j
 public class ProductController {
-    @Autowired
-    ProductServices productServices;
+	@Autowired
+	ProductServices productServices;
 
-    // Fetch all Products records
-    @GetMapping
-    public List<Products> listProducts() {
-        return productServices.listAll();
-    }
+	// Fetch all Products records
+	@GetMapping
+	public List<Products> listProducts() {
+		return productServices.listAll();
+	}
 
-    // Insert Product record
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Products newProduct(@RequestBody Products product) {
+	// Insert Product record
+	@PostMapping
+	@ResponseStatus(HttpStatus.CREATED)
+	public Products newProduct(@RequestBody Products product) {
 
-        return productServices.save(product);
-    }
+		return productServices.save(product);
+	}
 
 //    Find Product by id
 
@@ -55,36 +54,37 @@ public class ProductController {
 //        }
 //    }
 
-    // Update Product record
-    @PutMapping("/{id}")
-    public ResponseEntity<?> update(@RequestBody Products product, @PathVariable Long id) {
-        try {
-            Products existProduct = productServices.getById(id);
-            productServices.save(product);
-            return new ResponseEntity<>(HttpStatus.OK);
-        } catch (NoSuchElementException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-    // Delete Product
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteUser(@PathVariable Long id){
-        try {
-            productServices.delete(id);
-            return new ResponseEntity<String>(HttpStatus.OK);
-        }catch(RuntimeException ex){
-            // log the error message
-            System.out.println(ex.getMessage());
-            return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
-        }
-    }
+	// Update Product record
+	@PutMapping("/{id}")
+	public ResponseEntity<?> update(@RequestBody Products product, @PathVariable Long id) {
+		try {
+			Products existProduct = productServices.getById(id);
+			productServices.save(product);
+			return new ResponseEntity<>(HttpStatus.OK);
+		} catch (NoSuchElementException e) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
 
-    //    Find Product by id and category
+	// Delete Product
+	@DeleteMapping("/{id}")
+	public ResponseEntity<String> deleteUser(@PathVariable Long id) {
+		try {
+			productServices.delete(id);
+			return new ResponseEntity<String>(HttpStatus.OK);
+		} catch (RuntimeException ex) {
+			// log the error message
+			System.out.println(ex.getMessage());
+			return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
+		}
+	}
 
-    @GetMapping("/{id}")
-   public ResponseTemplateVO getProductWithCatgory (@PathVariable("id") Long productId){
+	// Find Product by id and category
+
+	@GetMapping("/{id}")
+	public ResponseTemplateVO getProductWithCatgory(@PathVariable("id") Long productId) {
 //        log.info("Inside getProductWithCatgory of ProductController");
-        return productServices.getProductWithCatgory(productId);
-   }
+		return productServices.getProductWithCatgory(productId);
+	}
 
 }
