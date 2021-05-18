@@ -26,6 +26,15 @@ public class Orders {
 	private int cartId;
 
 	private String userId;
+	private Long productId;
+
+	public Long getProductId() {
+		return productId;
+	}
+
+	public void setProductId(Long productId) {
+		this.productId = productId;
+	}
 
 	public String getUserId() {
 		return userId;

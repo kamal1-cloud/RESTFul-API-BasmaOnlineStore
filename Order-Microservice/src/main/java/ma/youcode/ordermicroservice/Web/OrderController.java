@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.extern.slf4j.Slf4j;
 import ma.youcode.VO.ResponseTemVO;
+import ma.youcode.VO.ResponseTempleteProduct;
 import ma.youcode.ordermicroservice.Models.Orders;
+import ma.youcode.ordermicroservice.Services.OrderProduct;
 import ma.youcode.ordermicroservice.Services.OrderUserService;
 import ma.youcode.ordermicroservice.Services.OrdersService;
 
@@ -26,21 +28,26 @@ import ma.youcode.ordermicroservice.Services.OrdersService;
 @Slf4j
 @RequestMapping("/order")
 public class OrderController {
-    @Autowired
-    OrdersService ordersService;
-    @Autowired
-    OrderUserService ordersUserService;
-    @GetMapping
-    public List<Orders> listOrders(){
-      return ordersService.listOrders();
-    }
-    // Insert Order record
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Orders newProduct(@RequestBody Orders order) {
+	@Autowired
+	OrdersService ordersService;
+	@Autowired
+	OrderUserService ordersUserService;
 
-        return ordersService.saveOrder(order);
-    }
+	@Autowired
+	OrderProduct orderProduct;
+
+	@GetMapping
+	public List<Orders> listOrders() {
+		return ordersService.listOrders();
+	}
+
+	// Insert Order record
+	@PostMapping
+	@ResponseStatus(HttpStatus.CREATED)
+	public Orders newProduct(@RequestBody Orders order) {
+
+		return ordersService.saveOrder(order);
+	}
 
 //    Find Order by id
 //
@@ -54,40 +61,47 @@ public class OrderController {
 //        }
 //    }
 
-    // Update Order record
-    @PutMapping("/{id}")
-    public ResponseEntity<?> update(@RequestBody Orders order, @PathVariable Long id) {
-        try {
-            Orders existOrders = ordersService.getOrderByid(id);
-            ordersService.saveOrder(order);
-            return new ResponseEntity<>(HttpStatus.OK);
-        } catch (NoSuchElementException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-    // Delete Product
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteOrder(@PathVariable Long id){
-        try {
-            ordersService.deleteOrder(id);
-            return new ResponseEntity<String>(HttpStatus.OK);
-        }catch(RuntimeException ex){
-            // log the error message
-            System.out.println(ex.getMessage());
-            return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
-        }
-    }
+	// Update Order record
+	@PutMapping("/{id}")
+	public ResponseEntity<?> update(@RequestBody Orders order, @PathVariable Long id) {
+		try {
+			Orders existOrders = ordersService.getOrderByid(id);
+			ordersService.saveOrder(order);
+			return new ResponseEntity<>(HttpStatus.OK);
+		} catch (NoSuchElementException e) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+
+	// Delete Product
+	@DeleteMapping("/{id}")
+	public ResponseEntity<String> deleteOrder(@PathVariable Long id) {
+		try {
+			ordersService.deleteOrder(id);
+			return new ResponseEntity<String>(HttpStatus.OK);
+		} catch (RuntimeException ex) {
+			// log the error message
+			System.out.println(ex.getMessage());
+			return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
+		}
+	}
 
 //    @GetMapping("/{id}")
 //    public ResponceTemplateVOrder getOrderWithCart(@PathVariable("id") Long orderId){
 ////        log.info("getProductWithCatgory of CartController");
 //        return ordersService.getOrderWithCart(orderId);
 //    }
-    
-    @GetMapping("/{id}")
-    public ResponseTemVO getOrderWithUser(@PathVariable("id") Long orderId){
-//        log.info("getProductWithCatgory of CartController");
-        return ordersUserService.getOrderWithUser(orderId);
-    }
 
+	@GetMapping("/{id}")
+	public ResponseTemVO getOrderWithUser(@PathVariable("id") Long orderId) {
+//        log.info("getProductWithCatgory of CartController");
+		return ordersUserService.getOrderWithUser(orderId);
+	}
+
+//	@GetMapping("/{id}")
+//	public ResponseTempleteProduct getOrderWithProduct(@PathVariable("id") Long orderId) {
+////        log.info("getProductWithCatgory of CartController");
+//		return orderProduct.getOrderWithProduct(orderId);
+//
+//	}
 }

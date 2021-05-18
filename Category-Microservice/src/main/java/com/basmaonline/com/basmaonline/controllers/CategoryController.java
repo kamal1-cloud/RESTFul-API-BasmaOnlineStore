@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-//@RequestMapping("/admin")
+@RequestMapping("/category")
 public class CategoryController {
 
     private final Logger log = LoggerFactory.getLogger(Category.class);
@@ -50,7 +50,7 @@ public class CategoryController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @GetMapping("/categories")
+    @GetMapping
     public ResponseEntity<List<Category>> findAll() {
         log.debug("REST request to get all Categories");
 
@@ -59,7 +59,7 @@ public class CategoryController {
         return ResponseEntity.ok().body(list);
     }
 
-    @GetMapping("/category/{categoryId}")
+    @GetMapping("/{categoryId}")
     public ResponseEntity<Category> getCategory(@PathVariable("categoryId") Long categoryId){
         log.debug("REST request to get Category : {}", categoryId);
         Optional<Category> category = categoryService.fetchCategoryById(categoryId);
@@ -67,7 +67,7 @@ public class CategoryController {
         return ResponseUtil.wrapOrNotFound(category);
     }
 
-    @DeleteMapping("/category/{categoryId}")
+    @DeleteMapping("/{categoryId}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Void> deleteCategory(@PathVariable("categoryId") Long categoryId) {
         log.debug("REST request to delete Category : {}", categoryId);

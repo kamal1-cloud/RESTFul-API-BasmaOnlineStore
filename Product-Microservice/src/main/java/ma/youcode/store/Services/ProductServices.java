@@ -32,15 +32,15 @@ public class ProductServices {
        productRepository.deleteById(id);
     }
 
-    public ResponseTemplateVO getProductWithCatgory(Long productId) {
-        log.info("Inside getProductWithCatgory of ProductService");
-        ResponseTemplateVO vo = new ResponseTemplateVO();
-        Products product = productRepository.findById(productId).get();
-        Category category =
-                restTemplate.getForObject("http://MICROSERVICE-CATEGORY/category/" + product.getCategoryId(),
-                        Category.class);
-        vo.setProducts(product);
-        vo.setCategory(category);
-        return vo;
-    }
+//    public ResponseTemplateVO getProductWithCatgory(Long productId) {
+//        log.info("Inside getProductWithCatgory of ProductService");
+//        ResponseTemplateVO vo = new ResponseTemplateVO();
+//        Products product = productRepository.findById(productId).get();
+//        Category category =
+//                restTemplate.getForObject("http://MICROSERVICE-CATEGORY/category/" + product.getCategoryId(),
+//                        Category.class);
+//        vo.setProducts(product);
+//        vo.setCategory(category);
+//        return vo;
+//    }
 }
