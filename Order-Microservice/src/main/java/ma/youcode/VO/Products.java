@@ -1,12 +1,19 @@
 package ma.youcode.VO;
 
-public class Product {
+public class Products {
+
 	private Long productId;
+
 	private String name;
+
 	private double price;
+
 	private int quantity;
+
 	private String description;
+
 	private boolean status;
+
 	private int CategoryId;
 
 	public Long getProductId() {
@@ -63,22 +70,6 @@ public class Product {
 
 	public void setCategoryId(int categoryId) {
 		CategoryId = categoryId;
-	}
-
-	public Product(Long productId, String name, double price, int quantity, String description, boolean status,
-			int categoryId) {
-		super();
-		this.productId = productId;
-		this.name = name;
-		this.price = price;
-		this.quantity = quantity;
-		this.description = description;
-		this.status = status;
-		CategoryId = categoryId;
-	}
-
-	public Product() {
-		super();
 	}
 
 }

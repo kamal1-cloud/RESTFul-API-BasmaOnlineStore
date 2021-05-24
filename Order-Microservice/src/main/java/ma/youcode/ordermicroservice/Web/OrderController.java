@@ -98,10 +98,10 @@ public class OrderController {
 		return ordersUserService.getOrderWithUser(orderId);
 	}
 
-//	@GetMapping("/{id}")
-//	public ResponseTempleteProduct getOrderWithProduct(@PathVariable("id") Long orderId) {
-////        log.info("getProductWithCatgory of CartController");
-//		return orderProduct.getOrderWithProduct(orderId);
-//
-//	}
+	@GetMapping("/{id}")
+	public ResponseTempleteProduct getOrderWithProduct(@PathVariable("id") Long orderId) {
+//        log.info("getProductWithCatgory of CartController");
+		return orderProduct.getOrderWithProduct(orderId);
+
+	}
 }

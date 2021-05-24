@@ -3,14 +3,14 @@ package ma.youcode.VO;
 import ma.youcode.ordermicroservice.Models.Orders;
 
 public class ResponseTempleteProduct {
-	private Product product;
+	private Products product;
 	private Orders oder;
 
-	public Product getProduct() {
+	public Products getProduct() {
 		return product;
 	}
 
-	public void setProduct(Product product) {
+	public void setProduct(Products product) {
 		this.product = product;
 	}
 
@@ -21,6 +21,5 @@ public class ResponseTempleteProduct {
 	public void setOder(Orders oder) {
 		this.oder = oder;
 	}
-
 
 }

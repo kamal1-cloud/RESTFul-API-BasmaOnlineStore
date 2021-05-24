@@ -23,7 +23,7 @@ public class OrderUserService {
 
 		Orders order = orderRepository.findById(idOrder).get();
 
-		User user = restTamplate.getForObject("http://USER-MICROSERVICE/api/test/" + order.getUserId(), User.class);
+		User user = restTamplate.getForObject("http://User-Microservice/api/test/" + order.getUserId(), User.class);
 
 		vo.setOder(order);
 		vo.setUser(user);

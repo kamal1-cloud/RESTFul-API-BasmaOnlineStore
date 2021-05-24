@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import ma.youcode.VO.Product;
+import ma.youcode.VO.Products;
 import ma.youcode.VO.ResponseTempleteProduct;
 import ma.youcode.ordermicroservice.Models.Orders;
 import ma.youcode.ordermicroservice.Repositories.OrderRepository;
@@ -23,8 +23,7 @@ public class OrderProduct {
 
 		Orders order = orderRepository.findById(idOrder).get();
 
-		Product product = restTamplate.getForObject("http://microservice-produits/product/" + order.getProductId(),
-				Product.class);
+		Products product = restTamplate.getForObject("http://microservice-produits/product/" + order.getProductId(),Products.class);
 
 		vo.setOder(order);
 		vo.setProduct(product);

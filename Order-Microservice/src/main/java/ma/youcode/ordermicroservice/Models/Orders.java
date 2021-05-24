@@ -27,6 +27,12 @@ public class Orders {
 
 	private String userId;
 	private Long productId;
+	
+	private double cartItemTotal;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date orderDate;
+	private String promoCode;
+
 
 	public Long getProductId() {
 		return productId;
@@ -84,9 +90,5 @@ public class Orders {
 		this.promoCode = promoCode;
 	}
 
-	private double cartItemTotal;
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date orderDate;
-	private String promoCode;
-
+	
 }

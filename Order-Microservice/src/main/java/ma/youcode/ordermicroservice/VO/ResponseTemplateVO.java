@@ -10,7 +10,7 @@ import ma.youcode.ordermicroservice.Models.Cart;
 @NoArgsConstructor
 public class ResponseTemplateVO {
 	private Cart cart;
-	private Product product;
+	private Products product;
 
 	public Cart getCart() {
 		return cart;
@@ -20,11 +20,11 @@ public class ResponseTemplateVO {
 		this.cart = cart;
 	}
 
-	public Product getProduct() {
+	public Products getProduct() {
 		return product;
 	}
 
-	public void setProduct(Product product) {
+	public void setProduct(Products product) {
 		this.product = product;
 	}
 
