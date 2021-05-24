@@ -6,6 +6,33 @@
   <component name="ChangeListManager">
     <list default="true" id="de31186e-e821-45ee-b944-eacf32165ef9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Product-Microservice/src/test/java/ma/youcode/store/Controller/ProductControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Product-Microservice/src/test/java/ma/youcode/store/Controller/ProductControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StoreUi/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/../StoreUi/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StoreUi/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../StoreUi/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StoreUi/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../StoreUi/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StoreUi/src/app/Services/produit.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StoreUi/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../StoreUi/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StoreUi/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../StoreUi/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StoreUi/src/app/auth/auth-routing.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StoreUi/src/app/auth/auth.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StoreUi/src/app/auth/components/login/login.component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StoreUi/src/app/auth/components/login/login.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StoreUi/src/app/auth/components/login/login.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StoreUi/src/app/auth/components/login/login.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StoreUi/src/app/auth/components/register/register.component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StoreUi/src/app/auth/components/register/register.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StoreUi/src/app/auth/components/register/register.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StoreUi/src/app/auth/components/register/register.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StoreUi/src/app/auth/components/reset-password/reset-password.component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StoreUi/src/app/auth/components/reset-password/reset-password.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StoreUi/src/app/auth/components/reset-password/reset-password.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StoreUi/src/app/auth/components/reset-password/reset-password.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StoreUi/src/app/produit.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StoreUi/src/app/produit.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StoreUi/src/app/produits/produits.component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StoreUi/src/app/produits/produits.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StoreUi/src/app/produits/produits.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StoreUi/src/app/produits/produits.component.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +76,10 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
+    <property name="settings.editor.selected.configurable" value="reactor" />
+  </component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
@@ -66,7 +96,54 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ProductMicroserviceApplication">
+  <component name="RunManager" selected="JUnit.ProductControllerTest.getProductWithCatgory">
+    <configuration name="ProductControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Product-Microservice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ma.youcode.store.Controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ma.youcode.store.Controller" />
+      <option name="MAIN_CLASS_NAME" value="ma.youcode.store.Controller.ProductControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductControllerTest.getProductWithCatgory" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Product-Microservice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ma.youcode.store.Controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ma.youcode.store.Controller" />
+      <option name="MAIN_CLASS_NAME" value="ma.youcode.store.Controller.ProductControllerTest" />
+      <option name="METHOD_NAME" value="getProductWithCatgory" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductControllerTest.listProducts" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Product-Microservice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ma.youcode.store.Controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ma.youcode.store.Controller" />
+      <option name="MAIN_CLASS_NAME" value="ma.youcode.store.Controller.ProductControllerTest" />
+      <option name="METHOD_NAME" value="listProducts" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ApiGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="Api-Gateway" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="ma.youcode.apigateway.ApiGatewayApplication" />
@@ -125,6 +202,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ProductControllerTest.getProductWithCatgory" />
+        <item itemvalue="JUnit.ProductControllerTest.listProducts" />
+        <item itemvalue="JUnit.ProductControllerTest" />
         <item itemvalue="Spring Boot.ProductMicroserviceApplication" />
       </list>
     </recent_temporary>
@@ -142,7 +222,15 @@
       <workItem from="1620381645564" duration="3427000" />
       <workItem from="1620537674313" duration="583000" />
       <workItem from="1620597051849" duration="8238000" />
-      <workItem from="1620640277632" duration="471000" />
+      <workItem from="1620640277632" duration="2963000" />
+      <workItem from="1620734778880" duration="1410000" />
+      <workItem from="1621249839895" duration="1830000" />
+      <workItem from="1621337716169" duration="2209000" />
+      <workItem from="1621547588979" duration="1086000" />
+      <workItem from="1621611961319" duration="227000" />
+      <workItem from="1621612238910" duration="967000" />
+      <workItem from="1621689967792" duration="2568000" />
+      <workItem from="1621793861194" duration="6168000" />
     </task>
     <servers />
   </component>
@@ -160,5 +248,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
