@@ -44,22 +44,32 @@ class ProductControllerTest {
                          .andExpect( MockMvcResultMatchers.status().is( HttpStatus.OK.value() ) )
                          .andDo(MockMvcResultHandlers.print())
                 ;
-
-
-    }
-
-    @Test
-    void newProduct() {
+        System.out.println(request);
 
     }
+
+//    @Test
+//    void newProduct() {
+//        mockMvc.perform( MockMvcRequestBuilders
+//                .post("/employees")
+//                .content(MockMvcResultMatchers.(new EmployeeVO(null, "firstName4", "lastName4", "email4@mail.com")))
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isCreated())
+//                .andExpect(MockMvcResultMatchers.jsonPath("$.employeeId").exists());
+//
+//    }
 
     @Test
     void update() {
     }
 
-    @Test
-    void deleteUser() {
-    }
+//    @Test
+//    void deleteUser() {
+//
+//        RequestBuilder request = mockMvc.perform( MockMvcRequestBuilders.delete("/product/2") )
+//                .andExpect(status().isAccepted());
+//    }
 
     @Test
     void getProductWithCatgory() throws Exception {
