@@ -9,19 +9,19 @@ spring:
           predicates:
             - Path=/order/**
           filters:
-            - name: CircuitBreaker
+#            - name: Hystrix
               args:
                 name: order-service
-                fallbackuri: forward:/orderFallBack
+                fallbackUri: forward:/orderFallBack
         - id: payment-service
           uri: lb://PAYMENT-SERVICE
           predicates:
             - Path=/payment/**
           filters:
-            - name: CircuitBreaker
+#            - name: Hystrix
               args:
                 name: payment-service
-                fallbackuri: forward:/paymentFallBack
+                fallbackUri: forward:/paymentFallBack
 
 
 eureka:
