@@ -1,5 +1,6 @@
 package ma.youcode.store.Controller;
 
+import ma.youcode.store.Model.Products;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
@@ -48,28 +49,31 @@ class ProductControllerTest {
 
     }
 
-//    @Test
-//    void newProduct() {
-//        mockMvc.perform( MockMvcRequestBuilders
-//                .post("/employees")
-//                .content(MockMvcResultMatchers.(new EmployeeVO(null, "firstName4", "lastName4", "email4@mail.com")))
-//                .contentType(MediaType.APPLICATION_JSON)
-//                .accept(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isCreated())
-//                .andExpect(MockMvcResultMatchers.jsonPath("$.employeeId").exists());
-//
-//    }
-
     @Test
-    void update() {
+    void newProduct() throws Exception {
+
+        mockMvc.perform( MockMvcRequestBuilders.post("/product")
+                .content("{\"message\": \"test product\"}")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isCreated())
+                .andDo(MockMvcResultHandlers.print());
     }
 
 //    @Test
-//    void deleteUser() {
-//
-//        RequestBuilder request = mockMvc.perform( MockMvcRequestBuilders.delete("/product/2") )
-//                .andExpect(status().isAccepted());
+//    void update() {
+//        mockMvc.perform(MockMvcRequestBuilders.put("/product/1").contentType(UnitTestUtil.APPLICATION_JSON_UTF8)
+//                .content(UnitTestUtil.convertObjectToJsonBytes(request)))
+//                .andExpect(status().isOk());
 //    }
+
+    @Test
+    void deleteProduct() throws Exception {
+
+        this.mockMvc.perform(MockMvcRequestBuilders
+                .delete("/product/2")
+                .contentType(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk());
+    }
 
     @Test
     void getProductWithCatgory() throws Exception {

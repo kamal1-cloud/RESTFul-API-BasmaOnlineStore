@@ -14,7 +14,7 @@ import java.util.List;
 @Table(name = "Products")
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
+//@AllArgsConstructor
 public class Products {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -35,11 +35,24 @@ public class Products {
     @Column(nullable = false)
     private boolean status;
 
+    @Column(nullable = false)
+    private String mainImage;
+
+
     private int CategoryId;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "productId", referencedColumnName = "productId")
     List<Images> images = new ArrayList<>();
 
+    public Products(String name, double price, int quantity, String description, boolean status, String mainImage, int categoryId) {
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+        this.description = description;
+        this.status = status;
+        this.mainImage = mainImage;
+        CategoryId = categoryId;
 
+    }
 }

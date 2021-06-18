@@ -42,11 +42,14 @@ public class CartService {
         log.info("Inside getCartWithProduct of ProductService");
         ResponseTemplateVOCart voc = new ResponseTemplateVOCart();
         Cart cart = cartRepository.findById(cartId).get();
+        System.out.println("cart is here"+  cart.getProductId());
         Product product =
                 restTemplate.getForObject("http://MICROSERVICE-PRODUITS/product/" + cart.getProductId(),
                         Product.class);
         voc.setCart(cart);
+
         voc.setProduct(product);
+        System.out.println("prod"+product.getName());
         return voc;
     }
 }

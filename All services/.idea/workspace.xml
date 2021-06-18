@@ -6,8 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="de31186e-e821-45ee-b944-eacf32165ef9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Api-Gateway/src/main/resources/Application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../Api-Gateway/src/main/resources/Application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Order-Microservice/src/main/java/ma/youcode/ordermicroservice/Services/CartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Order-Microservice/src/main/java/ma/youcode/ordermicroservice/Services/CartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Order-Microservice/src/main/java/ma/youcode/ordermicroservice/Web/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Order-Microservice/src/main/java/ma/youcode/ordermicroservice/Web/CartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Product-Microservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Product-Microservice/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Product-Microservice/src/main/java/ma/youcode/store/Controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Product-Microservice/src/main/java/ma/youcode/store/Controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Product-Microservice/src/main/java/ma/youcode/store/Exceptions/ResourceNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Product-Microservice/src/main/java/ma/youcode/store/Model/Products.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Product-Microservice/src/main/java/ma/youcode/store/Model/Products.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Product-Microservice/src/test/java/ma/youcode/store/Controller/ProductControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Product-Microservice/src/test/java/ma/youcode/store/Controller/ProductControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Service-registry/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Service-registry/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,11 +49,12 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Category-Microservice" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -71,23 +78,21 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ProductControllerTest.listProducts">
-    <configuration name="ProductControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.ProductMicroserviceApplication">
+    <configuration name="ProductMicroserviceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ma.youcode.store.ProductMicroserviceApplication" />
       <module name="Product-Microservice" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ma.youcode.store.Controller.*" />
+          <option name="PATTERN" value="ma.youcode.store.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="ma.youcode.store.Controller" />
-      <option name="MAIN_CLASS_NAME" value="ma.youcode.store.Controller.ProductControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProductControllerTest.deleteUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProductControllerTest.deleteProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Product-Microservice" />
       <extension name="coverage">
         <pattern>
@@ -97,7 +102,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="ma.youcode.store.Controller" />
       <option name="MAIN_CLASS_NAME" value="ma.youcode.store.Controller.ProductControllerTest" />
-      <option name="METHOD_NAME" value="deleteUser" />
+      <option name="METHOD_NAME" value="deleteProduct" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -130,6 +135,22 @@
       <option name="PACKAGE_NAME" value="ma.youcode.store.Controller" />
       <option name="MAIN_CLASS_NAME" value="ma.youcode.store.Controller.ProductControllerTest" />
       <option name="METHOD_NAME" value="listProducts" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductControllerTest.newProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Product-Microservice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ma.youcode.store.Controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ma.youcode.store.Controller" />
+      <option name="MAIN_CLASS_NAME" value="ma.youcode.store.Controller.ProductControllerTest" />
+      <option name="METHOD_NAME" value="newProduct" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -177,13 +198,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProductMicroserviceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true">
-      <module name="Product-Microservice" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="ma.youcode.store.ProductMicroserviceApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ServiceRegistryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="Service-registry" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="ma.youcode.serviceregistry.ServiceRegistryApplication" />
@@ -193,11 +207,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.ProductMicroserviceApplication" />
-        <item itemvalue="JUnit.ProductControllerTest.listProducts" />
+        <item itemvalue="Application.ProductMicroserviceApplication" />
+        <item itemvalue="JUnit.ProductControllerTest.deleteProduct" />
         <item itemvalue="JUnit.ProductControllerTest.getProductWithCatgory" />
-        <item itemvalue="JUnit.ProductControllerTest.deleteUser" />
-        <item itemvalue="JUnit.ProductControllerTest" />
+        <item itemvalue="JUnit.ProductControllerTest.newProduct" />
+        <item itemvalue="JUnit.ProductControllerTest.listProducts" />
       </list>
     </recent_temporary>
   </component>
@@ -228,6 +242,14 @@
       <workItem from="1622104559612" duration="561000" />
       <workItem from="1622191742970" duration="2000" />
       <workItem from="1622296412178" duration="4749000" />
+      <workItem from="1622450919144" duration="1837000" />
+      <workItem from="1622530015639" duration="699000" />
+      <workItem from="1622535547804" duration="8997000" />
+      <workItem from="1623159858024" duration="33000" />
+      <workItem from="1623188761466" duration="11000" />
+      <workItem from="1623204295034" duration="493000" />
+      <workItem from="1623838234110" duration="8958000" />
+      <workItem from="1623856875693" duration="289000" />
     </task>
     <servers />
   </component>

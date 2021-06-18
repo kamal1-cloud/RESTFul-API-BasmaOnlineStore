@@ -35,17 +35,6 @@ public class ProductController {
         return productServices.save(product);
     }
 
-//    Find Product by id
-
-//    @GetMapping("/{id}")
-//    public ResponseEntity<Products> get(@PathVariable Long id) {
-//        try {
-//            Products product = productServices.getById(id);
-//            return new ResponseEntity<>(product, HttpStatus.OK);
-//        } catch (NoSuchElementException e) {
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//    }
 
     // Update Product record
     @PutMapping("/{id}")
@@ -60,7 +49,7 @@ public class ProductController {
     }
     // Delete Product
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteUser(@PathVariable Long id){
+    public ResponseEntity<String> deleteProduct(@PathVariable Long id){
         try {
             productServices.delete(id);
             return new ResponseEntity<String>(HttpStatus.OK);

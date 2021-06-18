@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  app:
+    image: 'habrich001/product-service-001:latest'
+    build:
+      context: .
+    container_name: app
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/store
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=moonlightmydata
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  db:
+    image: 'postgres'
+    container_name: some-postgres
+    environment:
+      - POSTGRES_USER=some-postges
+      - POSTGRES_PASSWORD=mysecretpassword

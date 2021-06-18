@@ -34,17 +34,6 @@ public class CartController {
             return cartService.AddToCart(cart);
         }
 
-////    Find Order by id
-//
-//    @GetMapping("/{id}")
-//    public ResponseEntity<Cart> get(@PathVariable Long id) {
-//        try {
-//            Cart cart = cartService.getById(id);
-//            return new ResponseEntity<>(cart, HttpStatus.OK);
-//        } catch (NoSuchElementException e) {
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//    }
 
     // Update Order record
     @PutMapping("/{id}")
